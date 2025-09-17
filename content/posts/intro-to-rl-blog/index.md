@@ -160,7 +160,7 @@ $$v\_{\*}(s) = \operatorname{max}_a q\_{\*}(s,a)$$
 
 $$q\_{\*}(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a v\_{\*}(s')$$
 
-$$v\_{\*}(s) = \operatorname{max}_a \left( R_s^a + \gamma \sum_{s'} P_{ss'}^a v\_{\*}(s') \right)$$
+$$v_{ * }(s) = \operatorname{max}_ a \left( R_s^a + \gamma \sum_{ s' } P_{ ss' }^a v_{ * }(s') \right)$$
 
 $$q\_{\*}(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a \operatorname{max}_{a'} q\_{\*}(s',a')$$
 
