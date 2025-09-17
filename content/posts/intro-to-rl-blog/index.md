@@ -156,13 +156,13 @@ $$q_\pi(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a \sum_{a'} \pi(a'|s') q_\pi(s',
 
 If we want to find out the optimal values for the value or state-action value functions, we can use the Bellman Optimality Equations:
 
-$$v_*(s) = \max_a q_*(s,a)$$
+$$v_*(s) = \operatorname{max}_a q_*(s,a)$$
 
 $$q_*(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a v_*(s')$$
 
-$$v_*(s) = \max_a \left( R_s^a + \gamma \sum_{s'} P_{ss'}^a v_*(s') \right)$$
+$$v_*(s) = \operatorname{max}_a \left( R_s^a + \gamma \sum_{s'} P_{ss'}^a v_*(s') \right)$$
 
-$$q_*(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a \max_{a'} q_*(s',a')$$
+$$q_*(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a \operatorname{max}_{a'} q_*(s',a')$$
 
 ## Common Approaches
 
