@@ -6,7 +6,14 @@ theme = "PaperMod"
 [params]
   ShowReadingTime = true
   ShowPostNavLinks = true
-  math = true  # This enables math for PaperMod
+  math = true
+  
+[params.assets]
+  disableHLJS = false
+
+[params.math]
+  enable = true
+  mathjax = true
 
 [markup]
   [markup.goldmark]
