@@ -5,7 +5,7 @@ draft: false
 author: "Rithin Nagaraj"
 tags: ["AI", "Reinforcement Learning", "Machine Learning"]
 
-math = true
+math: true
 ---
  
  A lot of exciting stuff has happened in the world of Artificial Intelligence recently, and a lot of brilliant new ideas and technologies have emerged as a result of that with many core technologies being explored extensively. However, the art of fine-tuning these models to cater to human needs and how AI can be used to learn about strategies and patterns without any human data is a very beautiful area of its own. In this post, I will be briefly covering this exciting and wonderful field.
