@@ -22,39 +22,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- Custom CSS for rounded blog styling -->
 <style>
-.post-content {
-    background: var(--entry);
-    border-radius: 12px;
-    padding: 24px;
-    margin: 16px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border);
-}
-
-.dark .post-content {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.post-single .post-content {
-    margin: 0;
-}
-
+/* Rounded containers for blog post previews on main page */
 .post-entry {
     background: var(--entry);
     border-radius: 12px;
-    padding: 20px;
-    margin: 16px 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .post-entry:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.dark .post-entry {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .dark .post-entry:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Remove the styling from individual post content pages */
+.post-single .post-content {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
 }
 </style>
 {{- /* Head custom content area end */ -}}
