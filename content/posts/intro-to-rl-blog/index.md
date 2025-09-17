@@ -106,7 +106,7 @@ $$q_*(s,a) = \max_\pi q_\pi(s,a)$$
 
 The optimal policy achieves optimal value functions:
 
-$$\pi\_{\*}(s) = \arg\max_a q\_{\*}(s,a)$$
+$$\pi_*(s) = \arg\max_a q_*(s,a)$$
 
 ## Markov Decision Process
 
