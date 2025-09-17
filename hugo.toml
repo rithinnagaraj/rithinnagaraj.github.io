@@ -6,3 +6,7 @@ theme = "PaperMod"
 [params]
   math = true
   mathEngine = "mathjax"
+
+[security]
+  [security.sri]
+    disable = true
