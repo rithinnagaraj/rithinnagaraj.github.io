@@ -57,19 +57,28 @@
         }
 
     </style>
-</noscript><link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-<script defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false}
-          ],
-          throwOnError: false
-        });"></script>
+</noscript>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 
 <body class="list" id="top">
@@ -127,7 +136,7 @@
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-09-17 00:00:00 +0000 UTC'>September 17, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Rithin Nagaraj</footer>
-  <a class="entry-link" aria-label="post link to A  Brief Introduciton to Reinforcement Learning" href="http://localhost:1313/posts/intro-to-rl-blog/intro-to-rl-blog/"></a>
+  <a class="entry-link" aria-label="post link to A  Brief Introduciton to Reinforcement Learning" href="http://localhost:1313/posts/intro-to-rl-blog/"></a>
 </article>
     </main>
     
