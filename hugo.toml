@@ -1,0 +1,8 @@
+baseURL = "https://rithinnagaraj.github.io/"
+languageCode = "en-us"
+title = "Rin's Blog"
+theme = "PaperMod"
+
+[params]
+  math = true
+  mathEngine = "mathjax"
