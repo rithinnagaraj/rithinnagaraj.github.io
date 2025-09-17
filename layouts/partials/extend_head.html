@@ -22,38 +22,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- Custom CSS for rounded blog styling -->
 <style>
-/* Rounded containers for blog post previews on main page */
-.post-entry {
-    background: var(--entry);
-    border-radius: 12px;
-    padding: 24px;
-    margin: 20px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+/* Target PaperMod's blog post preview containers */
+.first-entry,
+.entry-link {
+    background: var(--entry) !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--border) !important;
+    transition: all 0.2s ease !important;
+    display: block !important;
 }
 
-.post-entry:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+.first-entry:hover,
+.entry-link:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px) !important;
 }
 
-.dark .post-entry {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+/* Dark mode */
+.dark .first-entry,
+.dark .entry-link {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
-.dark .post-entry:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+.dark .first-entry:hover,
+.dark .entry-link:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Remove the styling from individual post content pages */
-.post-single .post-content {
-    background: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    border: none;
+/* Make sure content inside doesn't inherit weird styles */
+.first-entry .entry-content,
+.entry-link .entry-content {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 </style>
 {{- /* Head custom content area end */ -}}
