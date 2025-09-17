@@ -22,42 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- Custom CSS for rounded blog styling -->
 <style>
-/* Target PaperMod's blog post preview containers */
+/* Remove any problematic styling for now */
 .first-entry,
 .entry-link {
-    background: var(--entry) !important;
-    border-radius: 12px !important;
-    padding: 24px !important;
-    margin: 20px 0 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    border: 1px solid var(--border) !important;
-    transition: all 0.2s ease !important;
-    display: block !important;
-}
-
-.first-entry:hover,
-.entry-link:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-    transform: translateY(-2px) !important;
-}
-
-/* Dark mode */
-.dark .first-entry,
-.dark .entry-link {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-}
-
-.dark .first-entry:hover,
-.dark .entry-link:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* Make sure content inside doesn't inherit weird styles */
-.first-entry .entry-content,
-.entry-link .entry-content {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
+    all: unset !important;
 }
 </style>
 {{- /* Head custom content area end */ -}}
