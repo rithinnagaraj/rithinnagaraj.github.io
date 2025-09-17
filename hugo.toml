@@ -7,12 +7,15 @@ theme = "PaperMod"
   ShowReadingTime = true
   ShowPostNavLinks = true
 
-[params.math]
-  enable = true
-  mathjax = true
+[params]
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  math = true  # This enables math for PaperMod
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.extensions]
+      math = true  # This tells Hugo's Goldmark to process math
     [markup.goldmark.renderer]
       unsafe = true
 

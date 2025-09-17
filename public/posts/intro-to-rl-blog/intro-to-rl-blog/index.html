@@ -9,7 +9,7 @@
 <meta name="keywords" content="AI, Reinforcement Learning, Machine Learning">
 <meta name="description" content="A lot of exciting stuff has happened in the world of Artificial Intelligence recently, and a lot of brilliant new ideas and technologies have emerged as a result of that with many core technologies being explored extensively. However, the art of fine-tuning these models to cater to human needs and how AI can be used to learn about strategies and patterns without any human data is a very beautiful area of its own. In this post, I will be briefly covering this exciting and wonderful field.">
 <meta name="author" content="Rithin Nagaraj">
-<link rel="canonical" href="http://localhost:1313/posts/intro-to-rl-blog/">
+<link rel="canonical" href="http://localhost:1313/posts/intro-to-rl-blog/intro-to-rl-blog/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b8c5fe199b6ed7d82f8d796745cb75f1db5c0e80089bf3c900c156f7941e8838.css" integrity="sha256-uMX&#43;GZtu19gvjXlnRct18dtcDoAIm/PJAMFW95QeiDg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/intro-to-rl-blog/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/intro-to-rl-blog/intro-to-rl-blog/">
 <noscript>
     <style>
         #theme-toggle,
@@ -120,21 +120,15 @@
     
     <h1 class="post-title entry-hint-parent">
       A  Brief Introduciton to Reinforcement Learning
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
     </h1>
-    <div class="post-meta"><span title='2024-09-17 00:00:00 +0000 UTC'>September 17, 2024</span>&nbsp;·&nbsp;Rithin Nagaraj
+    <div class="post-meta"><span title='2024-09-17 00:00:00 +0000 UTC'>September 17, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Rithin Nagaraj
 
 </div>
   </header> 
   <div class="post-content"><p>A lot of exciting stuff has happened in the world of Artificial Intelligence recently, and a lot of brilliant new ideas and technologies have emerged as a result of that with many core technologies being explored extensively. However, the art of fine-tuning these models to cater to human needs and how AI can be used to learn about strategies and patterns without any human data is a very beautiful area of its own. In this post, I will be briefly covering this exciting and wonderful field.</p>
 <h2 id="what-is-reinforcement-learning">What is Reinforcement Learning?<a hidden class="anchor" aria-hidden="true" href="#what-is-reinforcement-learning">#</a></h2>
 <p>Reinforcement Learning can be described as a field of Artificial Intelligence that deals with the science of decision making. It takes a unique approach where there is no supervisor to explicitly mention what&rsquo;s right or what&rsquo;s wrong. Instead, there is a reward signal which conveys that message. The feedback here is delayed and not instantaneous as observed with other areas of Machine Learning.</p>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/agent_environment_MDP.png"><!-- raw HTML omitted --><em>Figure 1: The agent-environment interaction in a Markov Decision Process (Image source: Sec. 3.1 Sutton &amp; Barto (2017).)</em></p>
+<p><img alt="A simple diagram" loading="lazy" src="agent_environment_MDP.png"><br><em>Figure 1: The agent-environment interaction in a Markov Decision Process (Image source: Sec. 3.1 Sutton &amp; Barto (2017).)</em></p>
 <p>Here, there is an agent that takes an action in an environment and receives a reward and a new state which is a result of the action that it took. The agent is tasked to maximise the reward that it can receive by adapting to the environment.</p>
 <h2 id="the-rl-problem">The RL Problem<a hidden class="anchor" aria-hidden="true" href="#the-rl-problem">#</a></h2>
 <p>The environment is initially unknown since the agent is just dropped into the environment. The agent then interacts with and explores the environment to gain more information about it. As it finds out the different techniques and methods it can use to get more rewards, it improves its policy.</p>
@@ -191,7 +185,7 @@
 <p>$$P_{ss&rsquo;} = P[S&rsquo; = s&rsquo; | S = s, A = a]$$</p>
 <p>The reward function gives the expectation of the rewards given a particular state and action.</p>
 <p>$$R_{sa} = E[R | S=s, A=a]$$</p>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/RL_algorithm_categorization.png"> <!-- raw HTML omitted -->
+<p><img alt="A simple diagram" loading="lazy" src="RL_algorithm_categorization.png"> <br>
 <em>Figure 2: Summary of approaches in RL (Image source: reproduced from David Silver&rsquo;s RL course lecture 1.)</em></p>
 <h3 id="optimal-value-and-policy">Optimal Value and Policy<a hidden class="anchor" aria-hidden="true" href="#optimal-value-and-policy">#</a></h3>
 <p>The optimal value produces the maximum return:</p>
@@ -211,7 +205,7 @@
 <li>$R$ - reward function $R_s$</li>
 <li>$\gamma$ - discount factor so that recent states can get more weight relative to older states</li>
 </ul>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/mdp_example.jpg"> <!-- raw HTML omitted -->
+<p><img alt="A simple diagram" loading="lazy" src="mdp_example.jpg"> <br>
 <em>Figure 3: An example of a Markov Decision Process: a typical workday (Image source: randomant.net/reinforcement-learning-concepts)</em></p>
 <h2 id="bellman-equations">Bellman Equations<a hidden class="anchor" aria-hidden="true" href="#bellman-equations">#</a></h2>
 <p>The Bellman Equations refer to a set of equations that decompose the value function, $V(s) = E[G_t | S_t = s]$ into:</p>
@@ -221,7 +215,7 @@
 </ul>
 <p>$$V(s) = E[R_{t+1} + \gamma \cdot V(S_{t+1}) | S_t = s]$$</p>
 <h3 id="bellman-expectation-equations">Bellman Expectation Equations<a hidden class="anchor" aria-hidden="true" href="#bellman-expectation-equations">#</a></h3>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/bellman_backup.png"> <!-- raw HTML omitted -->
+<p><img alt="A simple diagram" loading="lazy" src="bellman_backup.png"> <br>
 <em>Figure 4: Illustration of how a Bellman Expectation Equation updates the state-value or action-value functions. (Image source: reproduced from David Silver&rsquo;s UCL Course lecture 2.)</em></p>
 <p>We can take this example where there is a node referring to a state-action value, which has a certain probability of taking $s&rsquo;$ state, we can use a recursive method to approximate the value of the function $q_\pi(s,a)$ for that state $s$ and action $a$ in the diagram.</p>
 <p>$$v_\pi(s) = \sum_a \pi(a|s) q_\pi(s,a)$$</p>
@@ -268,12 +262,12 @@
 <p>&ldquo;SARSA&rdquo; refers to the procedure of updating Q-values by following a sequence of</p>
 <p>&hellip;.., $S_t$, $A_t$, $R_{t+1}$, $S_{t+1}$, $A_{t+1}$,&hellip;.. Within an episode, it works as:</p>
 <p>$$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]$$</p>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/sarsa_algorithm.png"> <!-- raw HTML omitted -->
+<p><img alt="A simple diagram" loading="lazy" src="sarsa_algorithm.png"> <br>
 <em>Figure 5: The SARSA Algorithm (Image Source: <a href="https://tcnguyen.github.io/reinforcement_learning/sarsa_vs_q_learning.html">https://tcnguyen.github.io/reinforcement_learning/sarsa_vs_q_learning.html</a>)</em></p>
 <h3 id="q-learning-off-policy-td-control">Q-Learning: Off-Policy TD Control<a hidden class="anchor" aria-hidden="true" href="#q-learning-off-policy-td-control">#</a></h3>
 <p>Similar to SARSA, but the key difference is that in Q-Learning we do not follow the current policy to pick the second action $A_{t+1}$. It estimates the $Q_*$ based on the best amongst all the possible Q-values from that state, irrespective of what action we take to get to the maximal Q value.</p>
 <p>$$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)]$$</p>
-<p><img alt="A simple diagram" loading="lazy" src="/posts/intro-to-rl-blog/Q_Learning_algorithm.png"> <!-- raw HTML omitted -->
+<p><img alt="A simple diagram" loading="lazy" src="Q_Learning_algorithm.png"> <br>
 <em>Figure 6: The Q-Learning Algorithm (Image Source: <a href="https://tcnguyen.github.io/reinforcement_learning/sarsa_vs_q_learning.html">https://tcnguyen.github.io/reinforcement_learning/sarsa_vs_q_learning.html</a>)</em></p>
 <h3 id="deep-q-learning">Deep Q-Learning<a hidden class="anchor" aria-hidden="true" href="#deep-q-learning">#</a></h3>
 <p>Theoretically, we can memorize all the Q-values for all the states with its actions in a lookup table and access them whenever we like. As the number of states and actions grows larger, it gets very difficult to store all these values in a table. Thus people use functions to approximate Q values and these are called function approximators. To these functions, we can pass the state, actions and theta, a parameter to calculate the Q values. We can label the Q values as $Q(s,a;\theta)$.</p>
@@ -306,6 +300,7 @@
       <li><a href="http://localhost:1313/tags/reinforcement-learning/">Reinforcement Learning</a></li>
       <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
     </ul>
+
   </footer>
 </article>
     </main>
