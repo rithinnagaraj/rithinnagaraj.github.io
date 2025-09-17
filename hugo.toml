@@ -4,45 +4,19 @@ title = "Rin's Blog"
 theme = "PaperMod"
 
 [params]
-  math = true
   ShowReadingTime = true
   ShowPostNavLinks = true
 
-[params.assets]
-  favicon = "<link / abs url>"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      definitionList = true
-      footnote = true
-      linkify = true
-      strikethrough = true
-      table = true
-      taskList = true
-      typographer = true
-    [markup.goldmark.parser]
-      autoHeadingID = true
-      autoHeadingIDType = "github"
-      [markup.goldmark.parser.attribute]
-        block = false
-        title = true
-    [markup.goldmark.renderer]
-      hardWraps = false
-      unsafe = true
-      xhtml = false
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = true
-    hl_Lines = ""
-    lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    style = "github"
-    tabWidth = 4
-
-# Enable MathJax
 [params.math]
   enable = true
   mathjax = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  style = "github"
