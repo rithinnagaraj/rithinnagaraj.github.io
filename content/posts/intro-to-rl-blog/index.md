@@ -256,7 +256,7 @@ Deep Q-Network ("DQN"; Mnih et. al. 2015) aims to greatly improve the stability 
 
 - **Updated Target Network**: Q is updated towards a target that is only periodically updated. For the target values, we clone the same network (local) with which we approximate the Q values except we copy the parameters from the local network to the target network once every C episodes, where C is a hyperparameter we can adjust. This is done so that we can overcome the problem of short-term oscillations, making the learning more stable.
 
-## Policy Gradient
+## Policy Gradients
 
 So far all the methods we have discussed aim to find out the state/action values and select the actions accordingly. However, we can also directly improve the policy using a parameterized function with respect to $\theta$, $\pi(a|s;\theta)$. We define the reward function as the expected return and train the model with the goal to maximize the reward function. This family of methods which directly train the policy of an agent are called Policy Gradient methods. They represent a fundamentally different approach from value-based methods and they are the foundation for many state-of-the-art algorithms like PPO, A3C, TRPO. While policy gradients deserve their own dedicated explanation, they're worth mentioning here.
 
