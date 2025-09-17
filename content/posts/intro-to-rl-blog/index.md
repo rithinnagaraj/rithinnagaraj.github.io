@@ -154,7 +154,7 @@ $$q_\pi(s,a) = R_s^a + \gamma \sum_{s'} P_{ss'}^a \sum_{a'} \pi(a'|s') q_\pi(s',
 
 ### Bellman Optimality Equations
 
-If we want to find out the optimal values for the value or state-action value functions, we can use the Bellman Optimality Equations:
+If we want to find out the optimal values for the value functions or state-action value functions, we can use the Bellman Optimality Equations:
 
 $$v\_{\*}(s) = \operatorname{max}_a q\_{\*}(s,a)$$
 
