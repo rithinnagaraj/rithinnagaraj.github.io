@@ -2,11 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Rin&#39;s Blog</title>
-    <link>https://rithinnagaraj.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Rin&#39;s Blog</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://rithinnagaraj.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A  Brief Introduciton to Reinforcement Learning</title>
+      <link>http://localhost:1313/posts/rl_blog_post/</link>
+      <pubDate>Tue, 17 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/rl_blog_post/</guid>
+      <description>&lt;p&gt;A lot of exciting stuff has happened in the world of Artificial Intelligence recently, and a lot of brilliant new ideas and technologies have emerged as a result of that with many core technologies being explored extensively. However, the art of fine-tuning these models to cater to human needs and how AI can be used to learn about strategies and patterns without any human data is a very beautiful area of its own. In this post, I will be briefly covering this exciting and wonderful field.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
