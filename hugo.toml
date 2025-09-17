@@ -1,7 +1,7 @@
 baseURL = "https://rithinnagaraj.github.io/"
 languageCode = "en-us"
 title = "Rin's Blog"
-theme = "PaperMod"
+theme = "papermod"
 
 [params]
   math = true
