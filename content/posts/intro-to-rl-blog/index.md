@@ -1,5 +1,5 @@
 ---
-title: "A  Brief Introduciton to Reinforcement Learning"
+title: "A  Brief Introduction to Reinforcement Learning"
 date: 2024-09-17
 draft: false
 author: "Rithin Nagaraj"
