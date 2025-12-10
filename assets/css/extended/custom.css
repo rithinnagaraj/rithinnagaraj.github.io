@@ -36,3 +36,22 @@
 .dark .post-entry:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
+
+/* Remove default theme background from code blocks to avoid "box" look */
+.post-content .highlight:not(table) {
+    background: transparent !important;
+}
+
+.post-content pre code {
+    background: transparent !important; /* Let the transparency shine through or use syntax highlighter's bg */
+}
+
+/* Optional: If you want a subtle background that matches the rounded posts */
+.post-content .highlight {
+    background: var(--code-block-bg) !important;
+    border-radius: 8px;
+    box-shadow: none !important; /* Remove any shadows creating a 'box' effect */
+    border: none !important;
+}
+
+/* Ensure code text color contrasts well (Dracula handles this usually) */

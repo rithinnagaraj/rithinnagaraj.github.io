@@ -18,4 +18,4 @@ theme = "PaperMod"
 [markup.highlight]
   codeFences = true
   guessSyntax = true
-  style = "github"
+  style = "dracula"

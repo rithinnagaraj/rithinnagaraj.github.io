@@ -53,43 +53,9 @@ class GrokkingConfig:
 
 We train this model using an arbitrary number of epochs until we obtain rapid generalization, we will check for this using early stopping, by stopping the training once the model obtains a validation accuracy of 97.5%.
 
-> Epoch: 499, Train Loss: 0.016067981719970703, Train Acc: 1.0, Val Acc: 0.011634411290287971
->
-> Epoch: 999, Train Loss: 0.008425424806773663, Train Acc: 1.0, Val Acc: 0.012753104791045189
->
-> Epoch: 1499, Train Loss: 0.005271475296467543, Train Acc: 1.0, Val Acc: 0.014990491792559624
->
-> Epoch: 1999, Train Loss: 0.0035275653935968876, Train Acc: 1.0, Val Acc: 0.016780400648713112
->
-> Epoch: 2499, Train Loss: 0.002459954237565398, Train Acc: 1.0, Val Acc: 0.01924152672290802
->
-> Epoch: 2999, Train Loss: 0.0017567952163517475, Train Acc: 1.0, Val Acc: 0.022038260474801064
->
-> Epoch: 3499, Train Loss: 0.0012750866590067744, Train Acc: 1.0, Val Acc: 0.02505873143672943
->
-> Epoch: 3999, Train Loss: 0.0009343863930553198, Train Acc: 1.0, Val Acc: 0.030652198940515518
->
-> Epoch: 4499, Train Loss: 0.0006907582865096629, Train Acc: 1.0, Val Acc: 0.040832310914993286
->
-> Epoch: 4999, Train Loss: 0.0005101371789351106, Train Acc: 1.0, Val Acc: 0.05571093037724495
->
-> Epoch: 5499, Train Loss: 0.000376334588509053, Train Acc: 1.0, Val Acc: 0.07875601202249527
->
-> Epoch: 5999, Train Loss: 0.00027723604580387473, Train Acc: 1.0, Val Acc: 0.1124286875128746
->
-> Epoch: 6499, Train Loss: 0.00020369331468828022, Train Acc: 1.0, Val Acc: 0.1675802767276764
->
-> Epoch: 6999, Train Loss: 0.00014836782065685838, Train Acc: 1.0, Val Acc: 0.25964874029159546
->
-> Epoch: 7499, Train Loss: 0.00010402609768789262, Train Acc: 1.0, Val Acc: 0.4201812446117401
->
-> Epoch: 7999, Train Loss: 6.873613892821595e-05, Train Acc: 1.0, Val Acc: 0.7335272431373596
->
-> Epoch: 8499, Train Loss: 3.966569420299493e-05, Train Acc: 1.0, Val Acc: 0.9671104550361633
->
-> Epoch: 8999, Train Loss: 2.592383862065617e-05, Train Acc: 1.0, Val Acc: 0.9969795346260071
+![Alt text](training_run.png "Training Run")
 
-This snippet is a full training run of the model. We can observe that the model initially starts to overfit very quickly and then after around Epoch 7000, the validation accuracy starts to increase very rapidly after a period of overfitting. This is the grokking phenomenon.
+This plot shows the training run of the model. We can observe that the model initially starts to overfit very quickly and then after around Epoch 7000, the validation accuracy starts to increase very rapidly after a period of overfitting. This is the grokking phenomenon.
 
 # Analysis
 

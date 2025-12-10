@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>A  Brief Introduciton to Reinforcement Learning | Rin&#39;s Blog</title>
+<title>A  Brief Introduction to Reinforcement Learning | Rin&#39;s Blog</title>
 <meta name="keywords" content="AI, Reinforcement Learning, Machine Learning">
 <meta name="description" content="A lot of exciting stuff has happened in the world of Artificial Intelligence recently, and a lot of brilliant new ideas and technologies have emerged as a result of that with many core technologies being explored extensively. However, the art of fine-tuning these models to cater to human needs and how AI can be used to learn about strategies and patterns without any human data is a very beautiful area of its own. In this post, I will be briefly covering this exciting and wonderful field.">
 <meta name="author" content="Rithin Nagaraj">
 <link rel="canonical" href="http://localhost:1313/posts/intro-to-rl-blog/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.178ce6e50513a5f70c45122a78bd23c61ef37237b35e5b738c1459130abe4b9c.css" integrity="sha256-F4zm5QUTpfcMRRIqeL0jxh7zcjezXltzjBRZEwq&#43;S5w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a5c0db47850865bc9e5bad3e53fea24b6f05b0e9e886806052a2474afa43b675.css" integrity="sha256-pcDbR4UIZbyeW60&#43;U/6iS28FsOnohoBgUqJHSvpDtnU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      A  Brief Introduciton to Reinforcement Learning
+      A  Brief Introduction to Reinforcement Learning
     </h1>
     <div class="post-meta"><span title='2024-09-17 00:00:00 +0000 UTC'>September 17, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Rithin Nagaraj
 
@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <p><strong>Updated Target Network</strong>: Q is updated towards a target that is only periodically updated. For the target values, we clone the same network (local) with which we approximate the Q values except we copy the parameters from the local network to the target network once every C episodes, where C is a hyperparameter we can adjust. This is done so that we can overcome the problem of short-term oscillations, making the learning more stable.</p>
 </li>
 </ul>
-<h2 id="policy-gradient">Policy Gradient<a hidden class="anchor" aria-hidden="true" href="#policy-gradient">#</a></h2>
+<h2 id="policy-gradients">Policy Gradients<a hidden class="anchor" aria-hidden="true" href="#policy-gradients">#</a></h2>
 <p>So far all the methods we have discussed aim to find out the state/action values and select the actions accordingly. However, we can also directly improve the policy using a parameterized function with respect to $\theta$, $\pi(a|s;\theta)$. We define the reward function as the expected return and train the model with the goal to maximize the reward function. This family of methods which directly train the policy of an agent are called Policy Gradient methods. They represent a fundamentally different approach from value-based methods and they are the foundation for many state-of-the-art algorithms like PPO, A3C, TRPO. While policy gradients deserve their own dedicated explanation, they&rsquo;re worth mentioning here.</p>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
 <p>[1] Sutton, R. S., &amp; Barto, A. G. (2018). <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf"><em>Reinforcement Learning: An Introduction</em></a>. MIT Press. [This is the foundational textbook in the field.]</p>
@@ -304,6 +304,13 @@ document.addEventListener("DOMContentLoaded", function() {
       <li><a href="http://localhost:1313/tags/reinforcement-learning/">Reinforcement Learning</a></li>
       <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
     </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/grokking-neural-fourier-circuits/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Grokking: Generalization Beyond Overfitting</span>
+  </a>
+</nav>
 
   </footer>
 </article>

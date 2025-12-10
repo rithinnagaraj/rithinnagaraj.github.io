@@ -6,10 +6,18 @@
     <description>Recent content in Machine Learning on Rin&#39;s Blog</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A  Brief Introduciton to Reinforcement Learning</title>
+      <title>Grokking: Generalization Beyond Overfitting</title>
+      <link>http://localhost:1313/posts/grokking-neural-fourier-circuits/</link>
+      <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/grokking-neural-fourier-circuits/</guid>
+      <description>&lt;p&gt;Most of the time when we train a model, we usually expect the model to learn the task at hand and generalize well on it. However, there are chances of overfitting where either the model complexity is too high for the amount of data at hand or a variety of other factors that prevent the model from generalizing well.&lt;/p&gt;
+&lt;p&gt;We assume that once a model starts overfitting, it will only continue to overfit even more and not return to generalizing. However, this is not always the case. &lt;a href=&#34;https://arxiv.org/abs/2201.02177&#34;&gt;Power et al. (2022)&lt;/a&gt; shows that a model can in fact, start to generalize very quickly after a period of overfitting.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A  Brief Introduction to Reinforcement Learning</title>
       <link>http://localhost:1313/posts/intro-to-rl-blog/</link>
       <pubDate>Tue, 17 Sep 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/intro-to-rl-blog/</guid>

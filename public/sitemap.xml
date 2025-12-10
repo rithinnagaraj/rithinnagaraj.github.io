@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/ai/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/grokking/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/grokking-neural-fourier-circuits/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/machine-learning/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mechanistic-interpretability/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/intro-to-rl-blog/</loc>
     <lastmod>2024-09-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ai/</loc>
-    <lastmod>2024-09-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/machine-learning/</loc>
-    <lastmod>2024-09-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-09-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
-    <lastmod>2024-09-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-09-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-09-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>

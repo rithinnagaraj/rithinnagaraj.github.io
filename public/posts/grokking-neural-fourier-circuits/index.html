@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Grokking: Generalization Beyond Overfitting | Rin&#39;s Blog</title>
+<meta name="keywords" content="AI, Mechanistic Interpretability, Machine Learning, Grokking">
+<meta name="description" content="Most of the time when we train a model, we usually expect the model to learn the task at hand and generalize well on it. However, there are chances of overfitting where either the model complexity is too high for the amount of data at hand or a variety of other factors that prevent the model from generalizing well.
+We assume that once a model starts overfitting, it will only continue to overfit even more and not return to generalizing. However, this is not always the case. Power et al. (2022) shows that a model can in fact, start to generalize very quickly after a period of overfitting.">
+<meta name="author" content="Rithin Nagaraj">
+<link rel="canonical" href="http://localhost:1313/posts/grokking-neural-fourier-circuits/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a5c0db47850865bc9e5bad3e53fea24b6f05b0e9e886806052a2474afa43b675.css" integrity="sha256-pcDbR4UIZbyeW60&#43;U/6iS28FsOnohoBgUqJHSvpDtnU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/grokking-neural-fourier-circuits/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Rin&#39;s Blog (Alt + H)">Rin&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Grokking: Generalization Beyond Overfitting
+    </h1>
+    <div class="post-meta"><span title='2024-12-10 00:00:00 +0000 UTC'>December 10, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Rithin Nagaraj
+
+</div>
+  </header> 
+  <div class="post-content"><p>Most of the time when we train a model, we usually expect the model to learn the task at hand and generalize well on it. However, there are chances of overfitting where either the model complexity is too high for the amount of data at hand or a variety of other factors that prevent the model from generalizing well.</p>
+<p>We assume that once a model starts overfitting, it will only continue to overfit even more and not return to generalizing. However, this is not always the case. <a href="https://arxiv.org/abs/2201.02177">Power et al. (2022)</a> shows that a model can in fact, start to generalize very quickly after a period of overfitting.</p>
+<h1 id="what-is-grokking">What is Grokking?<a hidden class="anchor" aria-hidden="true" href="#what-is-grokking">#</a></h1>
+<p>Grokking is the phenomenon where a model starts to rapidly generalize after an arbitrary amount of overfitting depending on the task that it is being trained on. In this blog, I will show the findings of the demonstration of this phenomenon.</p>
+<p>There are some factors to consider why Grokking occurs in general. Usually the model just overfits and doesn&rsquo;t actually converge to a good solution. To make sure that we observe it, we tune this hyperparameter weight decay in the optimizer that we use. Weight decay is a regularization technique that adds a penalty to the loss function based on the magnitude of the weights present in the model. So bigger the weights, higher the penalty and the model is forced to learn a simpler and generalizable solution.</p>
+<p>This is important because bigger weights to certain neurons essentiall means that the model is giving high priority to certain &ldquo;patterns&rdquo; that that neuron is looking for, which makes the model very brittle since in case it comes across a data instance which doesn&rsquo;t contain that pattern but is still valid, the model can break.</p>
+<h1 id="experimental-setup">Experimental Setup<a hidden class="anchor" aria-hidden="true" href="#experimental-setup">#</a></h1>
+<p>To demonstrate this phenomenon, we will be training a transformer model on predicting the output to modular addition <code>(a + b) mod 113</code> of two numbers. We will generate a dataset for this keeping the prime number modular value as 113. Why use prime numbers? Well, it is because if we use any non-prime number, there can be some patterns that the model can learn which isn&rsquo;t modular addition. For example, if we use 32 as the modular number, the model can learn something related to the factors of it like 2, 4, 8, 16, 32. Using prime numbers minimizes the chances of this happening. We will train the model with very few data instances to ensure that it overfits. In this demonstration, I did a 30:70 train-test split, which ensures that the model has just enough to learn the task eventually but not enough to generalize quickly at the start.</p>
+<p>We will be using a transformer model with the following hyperparameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">GrokkingConfig</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Model architecture</span>
+</span></span><span style="display:flex;"><span>    n_layers: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>    d_model: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">128</span>
+</span></span><span style="display:flex;"><span>    n_heads: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">4</span>
+</span></span><span style="display:flex;"><span>    d_head: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">32</span>
+</span></span><span style="display:flex;"><span>    n_ctx: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3</span>
+</span></span><span style="display:flex;"><span>    d_vocab: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">114</span>
+</span></span><span style="display:flex;"><span>    act_fn: <span style="color:#8be9fd;font-style:italic">str</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;relu&#39;</span>
+</span></span><span style="display:flex;"><span>    normalization_type: Optional[<span style="color:#8be9fd;font-style:italic">str</span>] <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Training hyperparameters</span>
+</span></span><span style="display:flex;"><span>    seed: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">999</span>
+</span></span><span style="display:flex;"><span>    prime_P: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">113</span>
+</span></span><span style="display:flex;"><span>    num_epochs: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">20000</span>
+</span></span><span style="display:flex;"><span>    lr: <span style="color:#8be9fd;font-style:italic">float</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.001</span>
+</span></span><span style="display:flex;"><span>    weight_decay: <span style="color:#8be9fd;font-style:italic">float</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1.0</span>
+</span></span><span style="display:flex;"><span>    batch_size_ratio: <span style="color:#8be9fd;font-style:italic">float</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.30</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Early stopping</span>
+</span></span><span style="display:flex;"><span>    target_val_acc: <span style="color:#8be9fd;font-style:italic">float</span> <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.975</span>
+</span></span></code></pre></div><h1 id="training">Training<a hidden class="anchor" aria-hidden="true" href="#training">#</a></h1>
+<p>We train this model using an arbitrary number of epochs until we obtain rapid generalization, we will check for this using early stopping, by stopping the training once the model obtains a validation accuracy of 97.5%.</p>
+<p><img alt="Alt text" loading="lazy" src="/posts/grokking-neural-fourier-circuits/training_run.png" title="Training Run"></p>
+<p>This plot shows the training run of the model. We can observe that the model initially starts to overfit very quickly and then after around Epoch 7000, the validation accuracy starts to increase very rapidly after a period of overfitting. This is the grokking phenomenon.</p>
+<h1 id="analysis">Analysis<a hidden class="anchor" aria-hidden="true" href="#analysis">#</a></h1>
+<p>After training the model and observing that the model has generalized, we need to prove that the model actually has learnt the right task and hasn&rsquo;t simply exploited some random spurious patterns in the data.</p>
+<p>To do this, we will check the <code>W_E</code> weights of the model and check if the model has learnt the right task. To verify this, we use Fast Fourier Transform (FFT) to check on this embedding matrix.</p>
+<p><img alt="Alt text" loading="lazy" src="/posts/grokking-neural-fourier-circuits/trained_fft.png" title="Trained FFT"></p>
+<p>Here we plot a graph of the each embedding dimension across the vocabulary of the model in the y-axis and the range of frequencies in the x-axis. We can observe that there are certain frequencies that the value of each dimension is high for. This means that the values of the embedding matrix dimensions are oscillating at a certain frequencies! This basically means that the model has learnt that a combination of cosine and sine waves are representative of the data.</p>
+<p>Each number can be represented in terms of cos and sin waves using this formula,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cos(x)sin(x) 
+</span></span></code></pre></div><p>which represents the number in terms of angles instead of only its value. This shows that the model has learnt that the value of the number oscillate after a certain point which is true in modular addition.</p>
+<p>For example, this is a graph of the exact same model but untrained:</p>
+<p><img alt="Alt text" loading="lazy" src="/posts/grokking-neural-fourier-circuits/untrained_fft.png" title="Untrained FFT"></p>
+<p>Here we can see that the model has not really learn any kind of specific pattern in the embedding matrix and the frequencies are all scattered out.</p>
+<p>To show that, model&rsquo;s attention heads also have learnt how to use the embeddings to actually predict the right output, we plot a graph of the attention scores against the <code>b</code> token of the input sequence keeping the <code>a</code> token fixed. This helps us visualize how the attention heads treat the input for a varying range of <code>b</code> values.</p>
+<p><img alt="Alt text" loading="lazy" src="/posts/grokking-neural-fourier-circuits/trained_head_waves.png" title="Trained Head Waves"></p>
+<p>We can see here that the even the different attention heads of the model are also oscillating at a certain frequency! This implies that the model is in fact performing a dot product between the input tokens and which results in this pattern of varying attention scores.</p>
+<p>You might ask, how exactly can a model compute modular addition using only dot products? Well, there is a certain trigonometric identity that this model found and is exploiting to compute modular addition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cos(a+b) = cos(a)cos(b) - sin(a)sin(b)
+</span></span></code></pre></div><p>But, the model does dot products which means it has to add them and not subtract this. So, the model internally converts the <code>b</code> value to <code>-b</code> and then uses this identity to compute the modular addition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cos(a-b) = cos(a)cos(b) + sin(a)sin(b)
+</span></span><span style="display:flex;"><span>Result  = cos(a-(-b))
+</span></span><span style="display:flex;"><span>Result  = cos(a+b) 
+</span></span></code></pre></div><p>For reference, here&rsquo;s the same plot with an untrained model:</p>
+<p><img alt="Alt text" loading="lazy" src="/posts/grokking-neural-fourier-circuits/untrained_head_waves.png" title="Untrained Head Waves"></p>
+<p>This discovery shows that the model has found a way to compute modular addition using just the dot products of the input tokens.</p>
+<h1 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h1>
+<p>[1] Power et al. (2022) - <a href="https://arxiv.org/abs/2201.02177">Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets</a>. The original paper identifying the phase transition.</p>
+<p>[2] Nanda et al. (2023) - <a href="https://arxiv.org/abs/2301.05217">Progress Measures for Grokking via Mechanistic Interpretability</a>. The paper that reverse-engineered the modular addition algorithm, which I replicated here.</p>
+<p>[3] Elhage et al. (2021) - <a href="https://transformer-circuits.pub/2021/framework/index.html">A Mathematical Framework for Transformer Circuits</a>. Foundational work on analyzing transformer weights.</p>
+<p>[4] TransformerLens - The library used for all activation patching and Fourier analysis in this project.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/ai/">AI</a></li>
+      <li><a href="http://localhost:1313/tags/mechanistic-interpretability/">Mechanistic Interpretability</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/grokking/">Grokking</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/posts/intro-to-rl-blog/">
+    <span class="title">Next »</span>
+    <br>
+    <span>A  Brief Introduction to Reinforcement Learning</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Rin&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
