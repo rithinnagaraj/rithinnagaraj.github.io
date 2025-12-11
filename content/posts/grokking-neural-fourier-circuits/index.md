@@ -15,13 +15,15 @@ We assume that once a model starts overfitting, it will only continue to overfit
 
 Grokking is the phenomenon where a model starts to rapidly generalize after an arbitrary amount of overfitting depending on the task that it is being trained on. In this blog, I will show the findings of the demonstration of this phenomenon.
 
-There are some factors to consider why Grokking occurs in general. Usually the model just overfits and doesn't actually converge to a good solution. To make sure that we observe it, we tune this hyperparameter weight decay in the optimizer that we use. Weight decay is a regularization technique that adds a penalty to the loss function based on the magnitude of the weights present in the model. So bigger the weights, higher the penalty and the model is forced to learn a simpler and generalizable solution. 
+There are some factors to consider why Grokking occurs in general. Usually the model just overfits and doesn't actually converge to a good solution. To make sure that we observe it, we tune this hyperparameter called weight decay in the optimizer that we use. Weight decay is a regularization technique that adds a penalty to the loss function based on the magnitude of the weights present in the model. So bigger the weights, higher the penalty and the model is forced to learn a simpler and generalizable solution. 
 
-This is important because bigger weights to certain neurons essentiall means that the model is giving high priority to certain "patterns" that that neuron is looking for, which makes the model very brittle since in case it comes across a data instance which doesn't contain that pattern but is still valid, the model can break.
+This is important because bigger weights to certain neurons essentially means that the model is giving high priority to certain "patterns" that that neuron is looking for, which makes the model very brittle since in case it comes across a data instance which doesn't contain that pattern but is still valid, the model can break.
 
 # Experimental Setup
 
-To demonstrate this phenomenon, we will be training a transformer model on predicting the output to modular addition ``` (a + b) mod 113 ``` of two numbers. We will generate a dataset for this keeping the prime number modular value as 113. Why use prime numbers? Well, it is because if we use any non-prime number, there can be some patterns that the model can learn which isn't modular addition. For example, if we use 32 as the modular number, the model can learn something related to the factors of it like 2, 4, 8, 16, 32. Using prime numbers minimizes the chances of this happening. We will train the model with very few data instances to ensure that it overfits. In this demonstration, I did a 30:70 train-test split, which ensures that the model has just enough to learn the task eventually but not enough to generalize quickly at the start.
+To demonstrate this phenomenon, we will be training a transformer model on predicting the output to modular addition ``` (a + b) mod 113 ``` of two numbers. We will generate a dataset for this keeping the prime number modular value as 113. Why use prime numbers? Well, it is because if we use any non-prime number, there can be some patterns that the model can learn which isn't modular addition. For example, if we use 32 as the modular number, the model can learn something related to the factors of it like 2, 4, 8, 16, 32. Using prime numbers minimizes the chances of this happening. 
+
+We will train the model with very few data instances to ensure that it overfits. In this demonstration, I did a 30:70 train-test split, which ensures that the model has just enough to learn the task eventually but not enough to generalize quickly at the start.
 
 We will be using a transformer model with the following hyperparameters:
 
@@ -51,7 +53,7 @@ class GrokkingConfig:
 
 # Training
 
-We train this model using an arbitrary number of epochs until we obtain rapid generalization, we will check for this using early stopping, by stopping the training once the model obtains a validation accuracy of 97.5%.
+We train this model using an arbitrary number of epochs until we obtain rapid generalization, we will check for this using early stopping, by stopping the training once the model obtains a validation accuracy of 97.5% or more.
 
 ![Alt text](training_run.png "Training Run")
 
