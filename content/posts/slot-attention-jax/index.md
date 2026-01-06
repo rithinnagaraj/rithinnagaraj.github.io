@@ -65,5 +65,7 @@ As you can observe, the model has reconstructed the image to a good level of app
 # References
 
 [1] Francesco Locatello, et al."[Object-Centric Learning with Slot Attention](https://arxiv.org/abs/2006.15055)". Advances in Neural Information Processing Systems (2020).
+
 [2] Google Research. "[slot_attention](https://github.com/google-research/google-research/tree/master/slot_attention)". GitHub repository (2020).
+
 [3] Phil Wang. "[slot-attention](https://github.com/lucidrains/slot-attention)". GitHub repository (2020).
