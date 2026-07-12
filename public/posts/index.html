@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Posts | Rin&#39;s Blog</title>
+<meta name="robots" content="index, follow">
+<title>Blogs | Rithin Nagaraj</title>
 <meta name="keywords" content="">
-<meta name="description" content="Posts - Rin&#39;s Blog">
+<meta name="description" content="Notes and write-ups on machine learning research.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a5c0db47850865bc9e5bad3e53fea24b6f05b0e9e886806052a2474afa43b675.css" integrity="sha256-pcDbR4UIZbyeW60&#43;U/6iS28FsOnohoBgUqJHSvpDtnU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://rithinnagaraj.github.io/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a283de5657b54ea89058d9c8bd27970e877055df199848902140fb2a4f97d43b.css" integrity="sha256-ooPeVle1TqiQWNnIvSeXDodwVd8ZmEiQIUD7Kk&#43;X1Ds=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://rithinnagaraj.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://rithinnagaraj.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://rithinnagaraj.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://rithinnagaraj.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://rithinnagaraj.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
+<link rel="alternate" type="application/rss+xml" href="https://rithinnagaraj.github.io/posts/index.xml">
+<link rel="alternate" hreflang="en" href="https://rithinnagaraj.github.io/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -28,35 +28,9 @@
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -72,58 +46,78 @@ document.addEventListener("DOMContentLoaded", function() {
         throwOnError: false
     });
 });
+</script><meta property="og:url" content="https://rithinnagaraj.github.io/posts/">
+  <meta property="og:site_name" content="Rithin Nagaraj">
+  <meta property="og:title" content="Blogs">
+  <meta property="og:description" content="Notes and write-ups on machine learning research.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blogs">
+<meta name="twitter:description" content="Notes and write-ups on machine learning research.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://rithinnagaraj.github.io/posts/"
+    }
+  ]
+}
 </script>
 </head>
 
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
+<body class="list dark" id="top">
 
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Rin&#39;s Blog (Alt + H)">Rin&#39;s Blog</a>
+            <a href="https://rithinnagaraj.github.io/" accesskey="h" title="Rithin Nagaraj (Alt + H)">Rithin Nagaraj</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="https://rithinnagaraj.github.io/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rithinnagaraj.github.io/posts/" title="Blogs">
+                    <span class="active">Blogs</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Posts
+    Blogs
   </h1>
+  <div class="post-description">
+    Notes and write-ups on machine learning research.
+  </div>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">I want that pixel! An implementation of Slot Attention in JAX
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that’s how Slot Attention is born!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-06 00:00:00 +0000 UTC'>January 6, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Rithin Nagaraj</footer>
+  <a class="entry-link" aria-label="post link to I want that pixel! An implementation of Slot Attention in JAX" href="https://rithinnagaraj.github.io/posts/slot-attention-jax/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -136,7 +130,7 @@ We assume that once a model starts overfitting, it will only continue to overfit
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-12-10 00:00:00 +0000 UTC'>December 10, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Rithin Nagaraj</footer>
-  <a class="entry-link" aria-label="post link to Grokking: Generalization Beyond Overfitting" href="http://localhost:1313/posts/grokking-neural-fourier-circuits/"></a>
+  <a class="entry-link" aria-label="post link to Grokking: Generalization Beyond Overfitting" href="https://rithinnagaraj.github.io/posts/grokking-neural-fourier-circuits/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -149,12 +143,12 @@ We assume that once a model starts overfitting, it will only continue to overfit
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-09-17 00:00:00 +0000 UTC'>September 17, 2024</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Rithin Nagaraj</footer>
-  <a class="entry-link" aria-label="post link to A  Brief Introduction to Reinforcement Learning" href="http://localhost:1313/posts/intro-to-rl-blog/"></a>
+  <a class="entry-link" aria-label="post link to A  Brief Introduction to Reinforcement Learning" href="https://rithinnagaraj.github.io/posts/intro-to-rl-blog/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">Rin&#39;s Blog</a></span> · 
+        <span>&copy; 2026 <a href="https://rithinnagaraj.github.io/">Rithin Nagaraj</a></span> · 
 
     <span>
         Powered by
@@ -208,18 +202,6 @@ We assume that once a model starts overfitting, it will only continue to overfit
             mybutton.style.opacity = "0";
         }
     };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
 </script>
 </body>

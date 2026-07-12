@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>I want that pixel! An implementation of Slot Attention in JAX | Rithin Nagaraj</title>
+<meta name="keywords" content="AI, Attention, Machine Learning, Object Centric Learning, Representation Learning">
+<meta name="description" content="The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that&rsquo;s how Slot Attention is born!">
+<meta name="author" content="Rithin Nagaraj">
+<link rel="canonical" href="https://rithinnagaraj.github.io/posts/slot-attention-jax/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a283de5657b54ea89058d9c8bd27970e877055df199848902140fb2a4f97d43b.css" integrity="sha256-ooPeVle1TqiQWNnIvSeXDodwVd8ZmEiQIUD7Kk&#43;X1Ds=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://rithinnagaraj.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://rithinnagaraj.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://rithinnagaraj.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://rithinnagaraj.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://rithinnagaraj.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://rithinnagaraj.github.io/posts/slot-attention-jax/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+    });
+});
+</script><meta property="og:url" content="https://rithinnagaraj.github.io/posts/slot-attention-jax/">
+  <meta property="og:site_name" content="Rithin Nagaraj">
+  <meta property="og:title" content="I want that pixel! An implementation of Slot Attention in JAX">
+  <meta property="og:description" content="The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that’s how Slot Attention is born!">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-06T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Attention">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Object Centric Learning">
+    <meta property="article:tag" content="Representation Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="I want that pixel! An implementation of Slot Attention in JAX">
+<meta name="twitter:description" content="The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that&rsquo;s how Slot Attention is born!">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://rithinnagaraj.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "I want that pixel! An implementation of Slot Attention in JAX",
+      "item": "https://rithinnagaraj.github.io/posts/slot-attention-jax/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "I want that pixel! An implementation of Slot Attention in JAX",
+  "name": "I want that pixel! An implementation of Slot Attention in JAX",
+  "description": "The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that\u0026rsquo;s how Slot Attention is born!\n",
+  "keywords": [
+    "AI", "Attention", "Machine Learning", "Object Centric Learning", "Representation Learning"
+  ],
+  "articleBody": "The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of Query, Key and Value pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that’s how Slot Attention is born!\nSlot Attention is an Unsupervised Object-Centric Representation Learning method that has the ability to divide an image into $K$ slots. It takes an image and iteratively crafts and builds slots that accurately represent the image using the objects that are present in that image. Here, slots could represent any object in an image, be it a cube or a sphere or any other arbitrary object.\nArchitecture The slot attention model is defined by three individual components: Encoder, Slot Attention, Decoder.\nEncoder The Encoder is a simple CNN Encoder which takes an image input $[B, H, W, 3]$ and converts it into a bunch of feature maps $[B, H, W, D]$ with $D$ channels, where $D$ is the number of dimensions of the slot vectors.\nThis Encoder output though, does not have any sort of positional information. For example, even though we know that clouds usually appear in the sky and its reflection appears in a lake, our model has no way to know that and will see the clouds and the reflection the same way since it isn’t informed about the positions of any pixel.\nTo solve this, we build a grid of the same height and width of the Encoder output which has the coordinate information of each pixel and add this to the encoder output. Now we have the encoder output ready to perform Slot Attention on!\nSlot Attention In traditional attention used in transformers and LLMs, attention is performed on all tokens with respect to all tokens and Softmax is applied on the input tokens itself.\nIn Slot Attention, we perform Softmax on the Slots instead of the input pixels. Why? That’s because we want the Slots to compete over each individual pixel and not the other way round, which develops a form of competition where each slots competes over each pixel to be included in its vector representation.\nThese slots would be of the shape $[B, K, D]$ where $B$ is the batch dimension, $K$ is the number of slots. These slots have to be initialized in such a way that they are sure to diverge and represent different entities in the image. Let’s say that we initialize all the slots with the exact same values, in this situation, all the slots are initially representing the same thing. In this case, all of the dot products in attention would be the exact same for all the slots, leading to the same gradient updates, breaking the slot attention.\nTo fix this, we extract the slot vectors using learnable parameters of $\\mu$ and $log(\\sigma)$ and we add a noise term $\\epsilon$ to this distribution $slot = \\mu + \\sigma.\\epsilon$ to make sure that all slots are initialized with different initial values.\nAfter initialization, the slots then perform attention where the slots are converted into $Q$ vectors and the input pixels are converted into $K$ and $V$ vectors. Then Attention is performed: $$ Softmax_k(\\frac{Q.K}{\\sqrt{D}}) $$ We do this iteratively for $T$ iterations, where we pass the new updates to the slot vectors to a GRU Cell which does the heavy lifting of maintaining the state of slot vectors and any updates done to it to get the slots vectors and then we pass them into the decoder.\nDecoder The decoder takes the slot vectors $[B, K, D]$ and converts them into an image of $[B\\times K, H_init, W_init, D]$, where $H_init$ and $W_init$ are the initial dimension of the image passed into the decoder. Each slot will be made into an image of size $[H_init, W_init, D]$ and the decoder is basically a stack of ConvTranspose layers which upsample the initial input into an image of size $[H_out, W_out, 4]$, where the first 3 channels are the rgb channels of the image and the fourth channel’s the mask of that slot.\nWe now have an output of $[BK, H_out, W_out, 4]$ and we separate this into $[BK, H_out, W_out, 3]$ being the rgb image and $[B*K, H_out, W_out, 1]$ being the mask. We then apply a sigmoid over the rgb image of each slot since the intensity values must be between 0 and 1 and we apply softmax over the masks on the slot dimension so that the slots can compete over which is more relevant for that image reconstruction.\nWhy use JAX? Attention is a very expensive operation and training can get very tedious. Since I am learning JAX and also wanted to do this reimplementation project. I decided to combine both and code the reimplementation purely on JAX and Flax, which is a JAX-based Deep Learning library made by Google Deepmind. I have specifically used jax.jit on the train_step function which enforces Just-In-Time compilation to execute that function, making training much more efficient.\nResults Initially I trained the model using a custom generated dataset which places colored blocks on a black background. This caused the reconstruction to be a plain black image. This behaviour occurred because the image contained mostly black pixels, and the MSE Loss used made the model follow the path of least resistance, leading to maximize the number of black pixels in the reconstruction, since the loss would be very low if the original input image contains mostly the black pixels and few chunks of other colored pixels in the image.\nSo instead I trained the model using a custom generated dataset which places colored blocks on slightly noisy gray background instead of a plain black background using $T=3$ and for 50000 steps with a batch size of 32 and using $D = 64$ .\nThese were the validation results: As you can observe, the model has reconstructed the image to a good level of approximation along with the each of the slots representing different parts of the input image.\nReferences [1] Francesco Locatello, et al.\"Object-Centric Learning with Slot Attention\". Advances in Neural Information Processing Systems (2020).\n[2] Google Research. “slot_attention”. GitHub repository (2020).\n[3] Phil Wang. “slot-attention”. GitHub repository (2020).\n",
+  "wordCount" : "1073",
+  "inLanguage": "en",
+  "datePublished": "2026-01-06T00:00:00Z",
+  "dateModified": "2026-01-06T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Rithin Nagaraj"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://rithinnagaraj.github.io/posts/slot-attention-jax/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rithin Nagaraj",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rithinnagaraj.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://rithinnagaraj.github.io/" accesskey="h" title="Rithin Nagaraj (Alt + H)">Rithin Nagaraj</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://rithinnagaraj.github.io/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rithinnagaraj.github.io/posts/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      I want that pixel! An implementation of Slot Attention in JAX
+    </h1>
+    <div class="post-meta"><span title='2026-01-06 00:00:00 +0000 UTC'>January 6, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Rithin Nagaraj
+
+</div>
+  </header> 
+  <div class="post-content"><p>The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of <em>Query, Key and Value</em> pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that&rsquo;s how Slot Attention is born!</p>
+<p>Slot Attention is an Unsupervised Object-Centric Representation Learning method that has the ability to divide an image into $K$ slots. It takes an image and iteratively crafts and builds slots that accurately represent the image using the objects that are present in that image. Here, slots could represent any object in an image, be it a cube or a sphere or any other arbitrary object.</p>
+<h1 id="architecture">Architecture<a hidden class="anchor" aria-hidden="true" href="#architecture">#</a></h1>
+<p>The slot attention model is defined by three individual components: Encoder, Slot Attention, Decoder.</p>
+<h2 id="encoder">Encoder<a hidden class="anchor" aria-hidden="true" href="#encoder">#</a></h2>
+<p>The Encoder is a simple CNN Encoder which takes an image input $[B, H, W, 3]$  and converts it into a bunch of feature maps $[B, H, W, D]$  with $D$ channels, where $D$ is the number of dimensions of the slot vectors.</p>
+<p>This Encoder output though, does not have any sort of positional information. For example, even though we know that clouds usually appear in the sky and its reflection appears in a lake, our model has no way to know that and will see the clouds and the reflection the same way since it isn&rsquo;t informed about the positions of any pixel.</p>
+<p>To solve this, we build a grid of the same height and width of the Encoder output which has the coordinate information of each pixel and add this to the encoder output. Now we have the encoder output ready to perform Slot Attention on!</p>
+<h2 id="slot-attention">Slot Attention<a hidden class="anchor" aria-hidden="true" href="#slot-attention">#</a></h2>
+<p>In traditional attention used in transformers and LLMs, attention is performed on all tokens with respect to all tokens and Softmax is applied on the input tokens itself.</p>
+<p>In Slot Attention, we perform Softmax on the Slots instead of the input pixels. Why? That&rsquo;s because we want the Slots to compete over each individual pixel and not the other way round, which develops a form of competition where each slots competes over each pixel to be included in its vector representation.</p>
+<p>These slots would be of the shape $[B, K, D]$ where $B$ is the batch dimension, $K$ is the number of slots. These slots have to be initialized in such a way that they are sure to diverge and represent different entities in the image. Let&rsquo;s say that we initialize all the slots with the exact same values, in this situation, all the slots are initially representing the same thing. In this case, all of the dot products in attention would be the exact same for all the slots, leading to the same gradient updates, breaking the slot attention.</p>
+<p>To fix this, we extract the slot vectors using learnable parameters of $\mu$ and $log(\sigma)$ and we add a noise term $\epsilon$ to this distribution $slot = \mu + \sigma.\epsilon$  to make sure that all slots are initialized with different initial values.</p>
+<p>After initialization, the slots then perform attention where the slots are converted into $Q$ vectors and the input pixels are converted into $K$ and $V$ vectors. Then Attention is performed:
+$$
+Softmax_k(\frac{Q.K}{\sqrt{D}})
+$$
+We do this iteratively for $T$ iterations, where we pass the new updates to the slot vectors to a GRU Cell which does the heavy lifting of maintaining the state of slot vectors and any updates done to it to get the slots vectors and then we pass them into the decoder.</p>
+<h1 id="decoder">Decoder<a hidden class="anchor" aria-hidden="true" href="#decoder">#</a></h1>
+<p>The decoder takes the slot vectors $[B, K, D]$ and converts them into an image of $[B\times K, H_init, W_init, D]$, where $H_init$ and $W_init$ are the initial dimension of the image passed into the decoder. Each slot will be made into an image of size $[H_init, W_init, D]$ and the decoder is basically a stack of ConvTranspose layers which upsample the initial input into an image of size $[H_out, W_out, 4]$, where the first 3 channels are the rgb channels of the image and the fourth channel&rsquo;s the mask of that slot.</p>
+<p>We now have an output of $[B<em>K, H_out, W_out, 4]$ and we separate this into $[B</em>K, H_out, W_out, 3]$ being the rgb image and $[B*K, H_out, W_out, 1]$ being the mask. We then apply a sigmoid over the rgb image of each slot since the intensity values must be between 0 and 1 and we apply softmax over the masks on the slot dimension so that the slots can compete over which is more relevant for that image reconstruction.</p>
+<h1 id="why-use-jax">Why use JAX?<a hidden class="anchor" aria-hidden="true" href="#why-use-jax">#</a></h1>
+<p>Attention is a very expensive operation and training can get very tedious. Since I am learning JAX and also wanted to do this reimplementation project. I decided to combine both and code the reimplementation purely on JAX and Flax, which is a JAX-based Deep Learning library made by Google Deepmind. I have specifically used <code>jax.jit</code> on the <code>train_step</code> function which enforces Just-In-Time compilation to execute that function, making training much more efficient.</p>
+<h1 id="results">Results<a hidden class="anchor" aria-hidden="true" href="#results">#</a></h1>
+<p>Initially I trained the model using a custom generated dataset which places colored blocks on a black background. This caused the reconstruction to be a plain black image. This behaviour occurred because the image contained mostly black pixels, and the MSE Loss used made the model follow the path of least resistance, leading to maximize the number of black pixels in the reconstruction, since the loss would be very low if the original input image contains mostly the black pixels and few chunks of other colored pixels in the image.</p>
+<p>So instead I trained the model using a custom generated dataset which places colored blocks on slightly noisy gray background instead of a plain black background using $T=3$ and for 50000 steps with a batch size of 32 and using $D = 64$ .</p>
+<p>These were the validation results:
+<img alt="Alt text" loading="lazy" src="/posts/slot-attention-jax/slotattnresult1.png">
+<img alt="Alt text" loading="lazy" src="/posts/slot-attention-jax/slotattnresult2.png">
+<img alt="Alt text" loading="lazy" src="/posts/slot-attention-jax/slotattnresult3.png"></p>
+<p>As you can observe, the model has reconstructed the image to a good level of approximation along with the each of the slots representing different parts of the input image.</p>
+<h1 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h1>
+<p>[1] Francesco Locatello, et al.&quot;<a href="https://arxiv.org/abs/2006.15055">Object-Centric Learning with Slot Attention</a>&quot;. Advances in Neural Information Processing Systems (2020).</p>
+<p>[2] Google Research. &ldquo;<a href="https://github.com/google-research/google-research/tree/master/slot_attention">slot_attention</a>&rdquo;. GitHub repository (2020).</p>
+<p>[3] Phil Wang. &ldquo;<a href="https://github.com/lucidrains/slot-attention">slot-attention</a>&rdquo;. GitHub repository (2020).</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://rithinnagaraj.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://rithinnagaraj.github.io/tags/attention/">Attention</a></li>
+      <li><a href="https://rithinnagaraj.github.io/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://rithinnagaraj.github.io/tags/object-centric-learning/">Object Centric Learning</a></li>
+      <li><a href="https://rithinnagaraj.github.io/tags/representation-learning/">Representation Learning</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://rithinnagaraj.github.io/posts/grokking-neural-fourier-circuits/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Grokking: Generalization Beyond Overfitting</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://rithinnagaraj.github.io/">Rithin Nagaraj</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+</body>
+
+</html>

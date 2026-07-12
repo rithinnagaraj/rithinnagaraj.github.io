@@ -1,0 +1,20 @@
+{{- define "main" }}
+<div class="about-page">
+    <header class="about-hero">
+        {{- if fileExists "static/images/profile.jpg" }}
+        <img class="about-photo" src="{{ "images/profile.jpg" | relURL }}" alt="{{ site.Title }}" width="140" height="140">
+        {{- else }}
+        <div class="about-photo about-photo--fallback" aria-hidden="true">RN</div>
+        {{- end }}
+        <div class="about-intro">
+            <h1>{{ site.Title }}</h1>
+            <p class="about-tagline">{{ site.Params.tagline }}</p>
+            {{- partial "social_icons.html" -}}
+        </div>
+    </header>
+
+    <div class="about-content">
+        {{ .Content }}
+    </div>
+</div>
+{{- end }}

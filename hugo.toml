@@ -1,12 +1,38 @@
 baseURL = "https://rithinnagaraj.github.io/"
 languageCode = "en-us"
-title = "Rin's Blog"
+title = "Rithin Nagaraj"
 theme = "PaperMod"
 
 [params]
+  defaultTheme = "dark"
+  disableThemeToggle = true
   ShowReadingTime = true
   ShowPostNavLinks = true
   math = true
+  tagline = "CS undergraduate researching continual learning, mechanistic interpretability, and state space models."
+
+  [[params.socialIcons]]
+    name = "email"
+    title = "Email"
+    url = "mailto:rithin.nagaraj@gmail.com"
+
+  [[params.socialIcons]]
+    name = "github"
+    title = "GitHub"
+    url = "https://github.com/rithinnagaraj"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "blogs"
+    name = "Blogs"
+    url = "/posts/"
+    weight = 20
 
 [markup]
   [markup.goldmark]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Object Centric Learning on Rithin Nagaraj</title>
+    <link>https://rithinnagaraj.github.io/tags/object-centric-learning/</link>
+    <description>Recent content in Object Centric Learning on Rithin Nagaraj</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rithinnagaraj.github.io/tags/object-centric-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I want that pixel! An implementation of Slot Attention in JAX</title>
+      <link>https://rithinnagaraj.github.io/posts/slot-attention-jax/</link>
+      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://rithinnagaraj.github.io/posts/slot-attention-jax/</guid>
+      <description>&lt;p&gt;The mechanism of Attention, widely popularized by the advent of ChatGPT and subsequent Large Language Models is one of the most beautiful and elegant mechanisms that have revolutionized the world. Attention finds an effective way to find out the contextual representation of any token with respect to all tokens in that input sequence using the dot products of &lt;em&gt;Query, Key and Value&lt;/em&gt; pairs. But wait, what if we take this mechanism, tweak it slightly and apply it to images? Well, that&amp;rsquo;s how Slot Attention is born!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

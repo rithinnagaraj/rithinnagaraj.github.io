@@ -2,36 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/ai/</loc>
+    <loc>https://rithinnagaraj.github.io/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/ai/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/attention/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/posts/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/posts/slot-attention-jax/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/machine-learning/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/object-centric-learning/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/representation-learning/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/</loc>
+    <lastmod>2026-01-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://rithinnagaraj.github.io/tags/grokking/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/grokking/</loc>
+    <loc>https://rithinnagaraj.github.io/posts/grokking-neural-fourier-circuits/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/grokking-neural-fourier-circuits/</loc>
+    <loc>https://rithinnagaraj.github.io/tags/mechanistic-interpretability/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/machine-learning/</loc>
-    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/mechanistic-interpretability/</loc>
-    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/intro-to-rl-blog/</loc>
+    <loc>https://rithinnagaraj.github.io/posts/intro-to-rl-blog/</loc>
     <lastmod>2024-09-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
+    <loc>https://rithinnagaraj.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2024-09-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://rithinnagaraj.github.io/categories/</loc>
   </url>
 </urlset>

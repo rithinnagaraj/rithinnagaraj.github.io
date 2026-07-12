@@ -1,0 +1,126 @@
+\documentclass[12pt,a4paper]{article}
+% --- Packages ---
+\usepackage[left=0.5in, right=0.5in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage{enumitem} % For compact bullet points
+\usepackage{hyperref} % For links
+\usepackage{titlesec} % For custom section formatting
+
+% --- Formatting Setup ---
+\pagestyle{empty} % No page numbers
+\raggedright    % Left align text
+
+% Custom Section Heading
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Hyperlink Setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    pdftitle={Rithin Nagaraj - CV},
+}
+
+% --- Document Starts ---
+\begin{document}
+
+% --- Header ---
+\begin{center}
+    {\huge \textbf{Rithin Nagaraj}} \\ \vspace{2pt} \href{mailto:rithin.nagaraj@gmail.com}{rithin.nagaraj@gmail.com} \ | \ \href{https://github.com/rithinnagaraj}{github.com/rithinnagaraj}
+\end{center}
+
+% --- Education ---
+\section{Education}
+\textbf{PES University, Bangalore} \hfill \textit{2023 -- 2027} \\
+Bachelor of Technology in Computer Science and Engineering
+
+% --- Research Experience ---
+\section{Research Experience}
+
+\textbf{Research Intern --- Lossfunk} \href{https://lossfunk.com}{[Link]} \hfill \textit{Jun 2026 -- Present} \\
+\textit{Project: Continual Learning for Sequential Models under Domain Shift} \\
+\textit{Tech: PyTorch, RNN/LSTM/SSMs, Replay Buffers, Time Series Analysis}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Designed} a cosine-distance-based selective replay buffer for sequential models experiencing domain shift, identifying maximally diverse exemplars by comparing cosine similarity of latent trajectory representations across domains.
+    \item \textbf{Demonstrated} that trajectory-level cosine similarity provides a more principled exemplar selection criterion than random replay, achieving measurably reduced catastrophic forgetting on held-out prior-domain benchmarks.
+    \item \textbf{Investigating} the stability--plasticity trade-off in sequential architectures under non-stationary time series distributions, targeting continual adaptation without episodic retraining from scratch.
+\end{itemize}
+\vspace{2pt}
+
+\section{Publications}
+
+\textbf{Mechanistic Interpretability in Large Language Models: SSMs vs. Transformers} \\ \textit{[Accepted, IAIT 2026]} \hfill \\
+\textit{Tech: PyTorch, Mamba, Pythia, Sparse Autoencoders (SAEs), TransformerLens, MambaLens}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Mapped} feature-level correspondences between Mamba-130m and Pythia-70m via SAE dictionary analysis over 10M text tokens, finding no evidence of architecturally exclusive ``Dark Matter'' features.
+    \item \textbf{Identified} a class of monosemantic landmark features unique to Mamba's recurrent hidden state, hypothesized to function as periodic state resets compensating for the absence of global positional attention.
+\end{itemize}
+\vspace{2pt}
+
+\textbf{Pharmacokinetic SSMs for Haemodynamic Collapse Prediction} \\ \textit{[Accepted and Best Paper Nominee, AIiH 2026]} \hfill \\
+\textit{Tech: PyTorch, Mamba (SSMs), Transformers, VitalDB}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Architected} a Mamba-based selective state space model to forecast intraoperative hypotension (IOH) 5--15 minutes in advance, achieving an AUROC of 0.7360 and a 2.73-fold AUPRC lift over random guessing.
+    \item \textbf{Engineered} explicit pharmacokinetic trajectories (Propofol and Remifentanil effect-site concentrations) as inputs, demonstrating that their inclusion prevents a 13.9\% AUPRC drop compared to haemodynamics-only baselines.
+    \item \textbf{Quantified} a critical ``lead-gap contamination'' selection bias in prior literature, empirically proving that failure to enforce strict temporal boundaries degrades true predictive AUROC by 16.7\%.
+\end{itemize}
+\vspace{2pt}
+
+% --- Research and Technical Projects ---
+\section{Research and Technical Projects}
+
+\textbf{Stable-Drift (Theofilou et al., ICCV 2025) Re-implementation} \ \href{https://github.com/rithinnagaraj/selective-buffer-cifar}{[GitHub]} \hfill \textit{Apr 2026} \\
+\textit{Tech: PyTorch, CNN, ViT, Replay Buffers, CIFAR-10}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Re-implemented} the latent drift-guided replay method, selecting buffer exemplars by measuring cosine distance between a sample's internal representations before and after naive domain adaptation, prioritising samples with the greatest representational instability.
+    \item \textbf{Validated} the core finding on CIFAR-10 under sequential domain shift, confirming that drift-based exemplar selection outperforms random replay in reducing catastrophic forgetting.
+\end{itemize}
+
+\textbf{World Models (Ha \& Schmidhuber, 2018) Re-implementation} \ \href{https://github.com/rithinnagaraj/world-models-implementation}{[GitHub]} \hfill \textit{Nov 2025} \\
+\textit{Tech: PyTorch, VAE, MDN-RNN, CMA-ES, Gymnasium}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Reproduced} the full V+M+C pipeline from scratch on CarRacing-v0, replicating the three-phase training procedure: random rollouts to VAE to MDN-RNN to CMA-ES controller.
+    \item \textbf{Trained} the Controller entirely within the MDN-RNN's dream space confirming that imagined rollouts alone yield competitive policies
+\end{itemize}
+\vspace{2pt}
+
+\textbf{Probing Compositional Limits in Object-Centric Learning} \ \href{https://github.com/rithinnagaraj/compositional-generalization-slots}{[GitHub]} \hfill \textit{Jan 2026} \\
+\textit{Tech: PyTorch, Scikit-learn, SciPy, Graph Neural Networks (GNN), Computer Vision}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Architected} a decoupled vision-graph pipeline, integrating a frozen Slot Attention autoencoder with a custom Pairwise Relational Network to extract and bind unsupervised object parts via connected components.
+    \item \textbf{Achieved} a 0.775 F1-score on a texture-flattened PartImageNet++ dataset by training the network to bridge over-segmented part artifacts using intra-domain geometric graph binding.
+    \item \textbf{Demonstrated} the morphological limitations of unsupervised compositional architectures through a zero-shot domain transfer test (Vehicles to Quadrupeds), empirically proving MLPs overfit to specific latent geometries.
+\end{itemize}
+\vspace{2pt}
+
+\textbf{Mechanistic Analysis of Grokking in Modular Transformers} \ \href{https://github.com/rithinnagaraj/neural-fourier-circuits}{[GitHub]} \hfill \textit{Nov 2025} \\
+\textit{Tech: PyTorch, TransformerLens, Matplotlib}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Investigated} the Grokking phase transition in 1-layer Transformers on modular arithmetic ($a+b \pmod{p}$), probing the circuit-level dynamics of delayed generalization.
+    \item \textbf{Reverse-engineered} internal representations using Discrete Fourier Transforms (DFT), demonstrating that the model spontaneously learns a trigonometric algorithm ($\cos(a+b)$) rather than rote memorization.
+    \item \textbf{Visualized} spectral specialization in embedding weights and oscillatory attention patterns to prove the emergence of neural Fourier circuits, connecting circuit-level structure to macroscopic generalization behaviour.
+\end{itemize}
+\vspace{2pt}
+
+\section{Writings}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \href{https://rithinnagaraj.github.io/posts/intro-to-rl-blog/}{A Brief Introduction to Reinforcement Learning} \hfill \textit{Sep 2025}
+    \item \href{https://rithinnagaraj.github.io/posts/grokking-neural-fourier-circuits/}{Grokking: Generalization Beyond Overfitting} \hfill \textit{Dec 2025}
+    \item \href{https://rithinnagaraj.github.io/posts/slot-attention-jax/}{I want that pixel! An Implementation of Slot Attention in JAX} \hfill \textit{Jan 2026}
+\end{itemize}
+
+% --- Technical Skills ---
+\section{Technical Skills}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=1.5em]
+    \item \textbf{Deep Learning \& GenAI:} PyTorch, Mamba (SSMs), TransformerLens, JAX, Flax, Optax, KANs.
+    \item \textbf{Reinforcement Learning:} World Models (VAE + MDN-RNN + CMA-ES), Gymnasium; foundational theory (Sutton \& Barto).
+    \item \textbf{Continual Learning:} Replay Buffer Methods, Cosine-Distance Exemplar Selection, Catastrophic Forgetting Mitigation, Stability--Plasticity Trade-off.
+    \item \textbf{Mechanistic Interpretability:} Sparse Autoencoders (SAEs), Circuit Analysis, Feature Decomposition, TransformerLens, MambaLens.
+    \item \textbf{Representation Learning:} Slot Attention, Object-Centric Learning, VAE, Graph Neural Networks, Disentangled Representations.
+    \item \textbf{Core \& Vision:} Python (Expert), C/C++, Torchvision, OpenCV, NumPy.
+    \item \textbf{Tools:} Git, Jupyter Notebook, Matplotlib, Weights \& Biases.
+\end{itemize}
+
+\end{document}
