@@ -4,7 +4,7 @@ title: "About"
 
 <section class="cv-section cv-bio">
 <p>Hi, I'm Rithin. I'm a Computer Science undergraduate at PES University, Bangalore, and currently a research intern at <a href="https://lossfunk.com" target="_blank" rel="noopener">Lossfunk</a>, where I work on continual learning for sequential models under domain shift.</p>
-<p>My research interests sit at the intersection of <strong>Reinforcement Learning</strong>, <strong>Continual Learning</strong> and <strong>Representational Learning</strong> — understanding how neural networks represent, retain, and adapt what they learn and developing methods to help networks retain previously learned knowledge while also being able to acquire new knowledge. I also write about these topics on my <a href="/posts/">blog</a>.</p>
+<p>My research interests sit at the intersection of <strong>Reinforcement Learning</strong>, <strong>Continual Learning</strong> and <strong>Representation Learning</strong> — understanding how neural networks represent, retain, and adapt what they learn and developing methods to help networks retain previously learned knowledge while also being able to acquire new knowledge. I also write about these topics on my <a href="/posts/">blog</a>.</p>
 </section>
 
 <section class="cv-section">
