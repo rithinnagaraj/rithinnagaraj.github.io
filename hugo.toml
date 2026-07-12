@@ -9,7 +9,7 @@ theme = "PaperMod"
   ShowReadingTime = true
   ShowPostNavLinks = true
   math = true
-  tagline = "CS undergraduate researching continual learning, mechanistic interpretability, and state space models."
+  tagline = "CS undergraduate researching Reinforcement Learning, Continual Learning and Representation Learning."
 
   [[params.socialIcons]]
     name = "email"
