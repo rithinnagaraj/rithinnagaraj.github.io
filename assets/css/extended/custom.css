@@ -6,7 +6,7 @@
     --accent-soft: rgba(122, 162, 247, 0.12);
 }
 
-.dark {
+:root[data-theme="dark"] {
     --theme: #0e0f13;
     --entry: #16181f;
     --primary: rgba(233, 235, 241, 0.92);
