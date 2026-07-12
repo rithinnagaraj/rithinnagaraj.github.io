@@ -120,7 +120,7 @@ title: "About"
 <li><strong>Deep Learning &amp; GenAI</strong> — PyTorch, SSMs, TransformerLens, JAX, Flax, Optax, KANs</li>
 <li><strong>Reinforcement Learning</strong> — World Models, Gymnasium, foundational theory (Sutton &amp; Barto)</li>
 <li><strong>Continual Learning</strong> — Buffer methods, cosine-distance exemplar selection, catastrophic forgetting mitigation, stability–plasticity trade-off</li>
-<li><strong>Mechanistic Interpretability</strong> — Sparse autoencoders, circuit analysis, feature decomposition, TransformerLens, MambaLens</li>
+<li><strong>Representations and Interpretability</strong> — Sparse autoencoders, circuit analysis, feature decomposition, TransformerLens, MambaLens</li>
 <li><strong>Representation Learning</strong> — Slot Attention, object-centric learning, VAE, graph neural networks, disentangled representations</li>
 <li><strong>Core &amp; Vision</strong> — Python, C/C++, Torchvision, OpenCV, NumPy</li>
 <li><strong>Tools</strong> — Git, Jupyter, Matplotlib, Weights &amp; Biases</li>
