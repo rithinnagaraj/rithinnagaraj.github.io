@@ -1,7 +1,7 @@
 {{- define "main" }}
 <div class="about-page">
     <header class="about-hero">
-        {{- if fileExists "static/images/profile.jpg" }}
+        {{- if fileExists "static/images/profile.jpeg" }}
         <img class="about-photo" src="{{ "images/profile.jpg" | relURL }}" alt="{{ site.Title }}" width="140" height="140">
         {{- else }}
         <div class="about-photo about-photo--fallback" aria-hidden="true">RN</div>
