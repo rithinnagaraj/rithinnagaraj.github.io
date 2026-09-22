@@ -4,7 +4,7 @@ title: "About"
 
 <section class="cv-section cv-bio">
 <p>Hi, I'm Rithin. I'm a Computer Science undergraduate at PES University, Bangalore, and currently a research intern at <a href="https://lossfunk.com" target="_blank" rel="noopener">Lossfunk</a>, where I work on continual learning for sequential models under domain shift.</p>
-<p>My research interests sit at the intersection of <strong>Reinforcement Learning</strong>, <strong>Continual Learning</strong> and <strong>Representation Learning</strong> — understanding how neural networks represent, retain, and adapt what they learn and developing methods to help networks retain previously learned knowledge while also being able to acquire new knowledge. I also write about these topics on my <a href="/posts/">blog</a>.</p>
+<p>My research interests sit at the intersection of <strong>Reinforcement Learning</strong>, <strong>Continual Learning</strong> and <strong>Representation Learning</strong>, understanding how neural networks represent, retain, and adapt what they learn and developing methods to help networks retain previously learned knowledge while also being able to acquire new knowledge. I also write about these topics on my <a href="/posts/">blog</a>.</p>
 </section>
 
 <section class="cv-section">
@@ -72,7 +72,7 @@ title: "About"
 <p class="cv-sub">Latent drift-guided replay (Theofilou et al., ICCV 2025)</p>
 <ul>
 <li>Re-implemented latent drift-guided replay: buffer exemplars are selected by cosine distance between a sample's internal representations before and after naive domain adaptation, prioritising the most representationally unstable samples.</li>
-<li>Validated the core finding on CIFAR-10 under sequential domain shift — drift-based exemplar selection outperforms random replay in reducing catastrophic forgetting.</li>
+<li>Validated the core finding on CIFAR-10 under sequential domain shift, drift-based exemplar selection outperforms random replay in reducing catastrophic forgetting.</li>
 </ul>
 <p class="cv-tech">PyTorch · CNN · ViT · Replay buffers · CIFAR-10</p>
 </div>
@@ -117,12 +117,12 @@ title: "About"
 <section class="cv-section">
 <h2>Skills</h2>
 <ul class="skills-list">
-<li><strong>Deep Learning &amp; GenAI</strong> — PyTorch, SSMs, TransformerLens, JAX, Flax, Optax, KANs</li>
-<li><strong>Reinforcement Learning</strong> — World Models, Gymnasium, foundational theory (Sutton &amp; Barto)</li>
-<li><strong>Continual Learning</strong> — Buffer methods, cosine-distance exemplar selection, catastrophic forgetting mitigation, stability–plasticity trade-off</li>
-<li><strong>Representations and Interpretability</strong> — Sparse autoencoders, circuit analysis, feature decomposition, TransformerLens, MambaLens</li>
-<li><strong>Representation Learning</strong> — Slot Attention, object-centric learning, VAE, graph neural networks, disentangled representations</li>
-<li><strong>Core &amp; Vision</strong> — Python, C/C++, Torchvision, OpenCV, NumPy</li>
-<li><strong>Tools</strong> — Git, Jupyter, Matplotlib, Weights &amp; Biases</li>
+<li><strong>Deep Learning &amp; GenAI</strong> - PyTorch, SSMs, TransformerLens, JAX, Flax, Optax, KANs</li>
+<li><strong>Reinforcement Learning</strong> - World Models, Gymnasium, foundational theory (Sutton &amp; Barto)</li>
+<li><strong>Continual Learning</strong> - Buffer methods, cosine-distance exemplar selection, catastrophic forgetting mitigation, stability-plasticity trade-off</li>
+<li><strong>Representations and Interpretability</strong> - Sparse autoencoders, circuit analysis, feature decomposition, TransformerLens, MambaLens</li>
+<li><strong>Representation Learning</strong> - Slot Attention, object-centric learning, VAE, graph neural networks, disentangled representations</li>
+<li><strong>Core &amp; Vision</strong> - Python, C/C++, Torchvision, OpenCV, NumPy</li>
+<li><strong>Tools</strong> - Git, Jupyter, Matplotlib, Weights &amp; Biases</li>
 </ul>
 </section>
