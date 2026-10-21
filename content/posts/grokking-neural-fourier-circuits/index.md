@@ -1,6 +1,6 @@
 ---
 title: "Grokking: Generalization Beyond Overfitting"
-date: 2024-12-10
+date: 2025-12-10
 draft: false
 author: "Rithin Nagaraj"
 tags: ["AI", "Mechanistic Interpretability", "Machine Learning", "Grokking"]

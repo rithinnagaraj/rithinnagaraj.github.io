@@ -1,6 +1,6 @@
 ---
 title: "A  Brief Introduction to Reinforcement Learning"
-date: 2024-09-17
+date: 2025-09-17
 draft: false
 author: "Rithin Nagaraj"
 tags: ["AI", "Reinforcement Learning", "Machine Learning"]

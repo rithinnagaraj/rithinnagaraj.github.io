@@ -6,7 +6,7 @@ enableRobotsTXT = true
 # The site uses its own small theme in /layouts and /assets (no external theme).
 
 [params]
-  description = "Rithin Nagaraj is a CS undergraduate researching continual learning, AI safety and control, world models for safe RL, mechanistic interpretability and state space models."
+  description = "Rithin Nagaraj is a CS undergraduate researching reinforcement learning, AI safety and control, continual learning, world models and interpretability."
   email = "rithin.nagaraj@gmail.com"
   github = "https://github.com/rithinnagaraj"
   # Served from the repo root via the mount below, so recompiling main.tex updates the site.
