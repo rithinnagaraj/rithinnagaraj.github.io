@@ -48,10 +48,9 @@ publications:
       - "Identified monosemantic landmark features in Mamba's recurrent hidden state and hypothesized that they act as periodic state resets that compensate for the absence of global positional attention."
 
 experience:
-  - role: "Research Collaborator"
-    org: "Imperial College London"
+  - role: "Independent Research Collaborator"
     dates: "Aug 2026 – Present"
-    desc: "Continual reinforcement learning and the cost of safety correction in LLMs."
+    desc: "Continual reinforcement learning and the cost of safety correction in LLMs. Working with Maksim Anisimov, PhD Candidate at Imperial College London"
   - role: "Research Intern"
     org: "Lossfunk"
     url: "https://lossfunk.com"

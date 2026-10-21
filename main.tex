@@ -1,0 +1,170 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\usepackage[left=0.5in,right=0.5in,top=0.45in,bottom=0.45in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{needspace}
+
+\pagestyle{empty}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+
+\titleformat{\section}
+  {\vspace{-5pt}\scshape\raggedright\large}
+  {}{0em}{}[\titlerule \vspace{-4pt}]
+
+% One shared list style instead of repeating options on every itemize
+\setlist[itemize]{noitemsep,topsep=1pt,leftmargin=1.4em}
+
+% Space between entries within a section
+\newcommand{\entrygap}{\vspace{5pt}\needspace{4\baselineskip}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  filecolor=black,
+  urlcolor=black,
+  pdftitle={Rithin Nagaraj - CV}
+}
+
+\begin{document}
+
+% ---------------------------------------------------------------- Header
+\begin{center}
+  {\huge \textbf{Rithin Nagaraj}} \\
+  \vspace{2pt}
+  \href{mailto:rithin.nagaraj@gmail.com}{rithin.nagaraj@gmail.com}
+  \quad | \quad
+  \href{https://github.com/rithinnagaraj}{github.com/rithinnagaraj}
+  \quad | \quad
+  \href{https://rithinnagaraj.github.io}{rithinnagaraj.github.io}
+  % TODO: add Google Scholar link once the profile is set up, e.g.
+  % \quad | \quad \href{https://scholar.google.com/citations?user=XXXX}{Google Scholar}
+\end{center}
+
+\vspace{-2pt}
+\textbf{Research interests:} continual learning, AI safety and control, world models for safe RL, mechanistic interpretability, state space models.
+
+% ---------------------------------------------------------------- Education
+\section{Education}
+\textbf{PES University, Bangalore} \hfill \textit{2023 -- 2027} \\
+Bachelor of Technology in Computer Science and Engineering
+% TODO (optional): add CGPA here if it is strong, e.g. "\hfill CGPA: x.xx/10"
+
+% ---------------------------------------------------------------- Publications
+\section{Publications and Preprints}
+
+\textbf{Pharmacokinetic SSMs for Haemodynamic Collapse Prediction}
+\hfill \textit{AIiH 2026, Best Paper Nominee (top 3\%)} \\
+\textbf{Rithin Nagaraj}, Sudiksha Chindula, Bhaskarjyoti Das.
+\quad [\href{https://doi.org/10.1007/978-3-032-35387-0_22}{DOI}]
+[\href{https://arxiv.org/abs/2609.24338}{arXiv}]
+\begin{itemize}
+  \item Architected a Mamba-based selective state space model to forecast intraoperative hypotension 5 to 15 minutes in advance, achieving \textbf{0.7360 AUROC} and a \textbf{2.73-fold AUPRC lift} over random guessing.
+  \item Engineered Propofol and Remifentanil effect-site concentration trajectories as explicit inputs, preventing a \textbf{13.9\% AUPRC drop} compared with haemodynamics-only baselines.
+  \item Quantified lead-gap contamination in prior evaluation setups, with strict temporal boundaries reducing apparent AUROC by \textbf{16.7\%} compared with the less constrained evaluation.
+\end{itemize}
+\entrygap
+
+\textbf{CAP-Adam: Inspectable Protection for Continual Learning}
+\hfill \textit{Under review at TMLR} \\
+\textbf{Rithin Nagaraj}, Paras Chopra.
+\begin{itemize}
+  \item Proposed a continual learning optimizer that modulates parameter updates by their importance to previously learned tasks, outperforming AdamW and established baselines including Elastic Weight Consolidation (EWC).
+  \item Achieved approximately \textbf{90\% retention across 40 unique tasks} while maintaining \textbf{91\% mean current-task accuracy over 200 sequential tasks} on Permuted MNIST with an MLP-300 model.
+  \item Showed that optimizer hyperparameters systematically control the stability--plasticity trade-off, enabling controlled studies of knowledge retention and adaptation.
+\end{itemize}
+\entrygap
+
+\textbf{Comparing Latent Concept Formation in SSMs and Transformers via SAEs}
+\hfill \textit{arXiv preprint, 2026} \\
+\textbf{Rithin Nagaraj}, Prerna Subhashchandra Kunder, Rupa Laalasa Oruganti, Aswhini Joshi.
+\quad [\href{https://arxiv.org/abs/2609.24440}{arXiv}]
+\begin{itemize}
+  \item Mapped feature-level correspondences between Mamba-130m and Pythia-70m using sparse autoencoder dictionaries over \textbf{10M text tokens}, finding no evidence of architecture-exclusive Dark Matter features.
+  \item Identified monosemantic landmark features in Mamba's recurrent hidden state and hypothesized that they act as periodic state resets that compensate for the absence of global positional attention.
+\end{itemize}
+
+% ---------------------------------------------------------------- Positions
+\section{Experience}
+
+\textbf{Research Collaborator} | Imperial College London \hfill \textit{Aug 2026 -- Present} \\
+\textit{Continual reinforcement learning and the cost of safety correction in LLMs.}
+\entrygap
+
+\textbf{Research Intern} | \href{https://lossfunk.com}{Lossfunk} \hfill \textit{Jun 2026 -- Present} \\
+\textit{Continual learning optimizers (CAP-Adam, under review at TMLR) and AI control for LLM agents.}
+\entrygap
+
+\textbf{Research Intern} | RAPID Labs, PES University \hfill \textit{Jun 2024 -- Aug 2024} \\
+\textit{Vision classifiers to predict arability of soil for exotic crops using satellite imagery}
+
+% ---------------------------------------------------------------- Ongoing
+\section{Ongoing Research}
+
+\textbf{Continual RLVR and Safety-Support Collapse} \quad [\href{https://github.com/rithinnagaraj/safety-support-collapse}{Code}] \hfill \textit{Imperial College London}
+\begin{itemize}
+  \item Asking whether training a 3B Qwen model on a sequence of harmless tasks with \textbf{RL from verifiable rewards (RLVR)} can quietly make useful, safe answers on earlier tasks unreachable, even while task accuracy and aggregate safety metrics look stable.
+  \item Measuring how many rollouts \textbf{corrective RLVR} needs before earlier tasks give a useful learning signal again, to see whether continual training makes safety fixes more expensive.
+\end{itemize}
+\entrygap
+
+\textbf{Adversarially Trained Container Design for LLM Agent Control} \quad [\href{https://github.com/rithinnagaraj/adversarial-sandbox}{Code}] \hfill \textit{Lossfunk}
+\begin{itemize}
+  \item Training a \textbf{designer model} against LLM agents to write Docker configurations that stop a possibly misaligned agent from escaping or causing harm, without blocking the harmless work it is there to do.
+  \item In a first sanity check with \textbf{Qwen3-30B-A3B, DeepSeek-V4-Pro and GLM-5.3} as agents (4 routes to harm, $\sim$5,000 possible configurations), a simple softmax policy found a setup that was both safe and useful within \textbf{20 episodes}.
+  \item Next: adding more independent routes to harm and opening up a much larger configuration space.
+\end{itemize}
+\entrygap
+
+\textbf{Confounding in Learned World Models for Anesthesia Dosing} \quad [\href{https://github.com/rithinnagaraj/anesthetic-world-models}{Code}]
+\hfill \textit{PES University}
+\begin{itemize}
+  \item Clinicians adjust doses in response to what they see, so a model trained on recorded surgeries can pick up those reactions instead of how the drugs actually work. Testing whether world models fall into this trap, since RL dosing policies would be trained inside them.
+  \item Trained \textbf{25 models} (GRU, Transformer, RSSM, a 5-RSSM ensemble, and a hybrid where doses act only through pharmacokinetic--pharmacodynamic equations; 5 seeds each). The black boxes predict well: 6.9--7.2 five-minute BIS error, \textbf{27--29\% better} than pharmacology alone.
+  \item Early counterfactual tests suggest they learned only part of the story: drug effects point the right way but are just \textbf{12--21\% as strong} as pharmacology predicts and arrive \textbf{3--7 min late}. The hybrid recovers $\sim$\textbf{72\%} of the expected effect with correct timing, at a 12\% cost in BIS accuracy.
+\end{itemize}
+
+% ---------------------------------------------------------------- Projects
+\section{Projects}
+
+\textbf{Stable-Drift Re-implementation} \quad [\href{https://github.com/rithinnagaraj/selective-buffer-cifar}{Code}] \hfill \textit{Apr 2026}
+\begin{itemize}
+  \item Re-implemented the ICCV 2025 latent drift-guided replay method on CIFAR-10, selecting exemplars by representational change under domain adaptation and validating that drift-based selection reduces forgetting compared with random replay.
+\end{itemize}
+\entrygap
+
+\textbf{Probing Compositional Limits in Object-Centric Learning} \quad [\href{https://github.com/rithinnagaraj/compositional-generalization-slots}{Code}] \hfill \textit{Jan 2026}
+\begin{itemize}
+  \item Built a frozen Slot Attention plus relational graph pipeline for unsupervised object-part binding, using connected components and pairwise relations to bridge over-segmented object parts.
+  \item Achieved \textbf{0.775 F1} on texture-flattened PartImageNet++ and used zero-shot transfer from vehicles to quadrupeds to probe how strongly learned relations depend on domain-specific latent geometry.
+\end{itemize}
+\entrygap
+
+\textbf{World Models Re-implementation} \quad [\href{https://github.com/rithinnagaraj/world-models-implementation}{Code}] \hfill \textit{Nov 2025}
+\begin{itemize}
+  \item Reproduced the complete VAE, MDN-RNN, and CMA-ES controller pipeline from scratch on CarRacing-v0, including random rollout collection, latent representation learning, sequence modeling, and controller optimization.
+\end{itemize}
+
+% ---------------------------------------------------------------- Writing
+\section{Technical Writing}
+\href{https://rithinnagaraj.github.io/posts/intro-to-rl-blog/}{Reinforcement Learning}
+\quad | \quad
+\href{https://rithinnagaraj.github.io/posts/grokking-neural-fourier-circuits/}{Grokking and Neural Fourier Circuits}
+\quad | \quad
+\href{https://rithinnagaraj.github.io/posts/slot-attention-jax/}{Slot Attention in JAX}
+
+% ---------------------------------------------------------------- Skills
+\section{Technical Skills}
+\textbf{Languages:} Python, C, C++, Bash \\
+\textbf{ML frameworks:} PyTorch, JAX, TransformerLens, NumPy, SciPy, Scikit-learn \\
+\textbf{Methods:} State space models (Mamba), world models (RSSM), sparse autoencoders, reinforcement learning (RLVR), continual learning, graph neural networks \\
+\textbf{Tools:} Git, Docker, Weights \& Biases, Jupyter
+
+\end{document}
