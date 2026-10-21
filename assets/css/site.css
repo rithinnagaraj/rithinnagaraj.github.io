@@ -108,7 +108,7 @@ img { max-width: 100%; height: auto; }
 .intro-photo { flex: none; width: 240px; margin: 0; }
 .intro-photo img { display: block; width: 240px; height: 300px; object-fit: cover; border: 1px solid var(--line); }
 .intro-photo figcaption { margin-top: 5px; font-size: 12px; font-style: italic; }
-.contact { margin: 14px 0 0; font-size: 12px; font-weight: 400; }
+.contact { margin: 14px 0 0; font-size: 10.5px; font-weight: 400; letter-spacing: -.05em; white-space: nowrap; }
 
 /* ---------- sections ---------- */
 h2 {
