@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="top">
+    <p class="name"><a href="{{ "/" | relURL }}">{{ site.Title }}</a> <span class="aside">{{ hugo.Data.cv.aside }}</span></p>
+    <nav class="links" aria-label="Main">
+      <a href="{{ site.Params.cv | relURL }}">cv</a> /
+      <a href="{{ "/posts/" | relURL }}">blog</a> /
+      <a href="{{ site.Params.github }}" rel="me">github</a> /
+      <a href="mailto:{{ site.Params.email }}">email</a>
+    </nav>
+  </header>
+  <main class="box" id="main">
+    <div class="chomp" aria-hidden="true"><span class="pac"></span><span class="pellets"></span></div>
+{{ block "main" . }}{{ end }}
+  </main>
+  <footer class="foot">
+    <p>© {{ now.Year }} {{ site.Title }} · last updated {{ now.Format "2 Jan 2006" | lower }} · <a href="{{ "/index.xml" | relURL }}">rss</a></p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+# Everything on the homepage that comes from the CV lives here.
+# Edit this file (not the templates) to update the site.
+
+aside: "researcher-in-training"
+photo_caption: "me, the hat, and a waterfall."
+
+interests:
+  - reinforcement learning
+  - AI safety and control
+  - continual learning
+  - world models
+  - interpretability
+
+education:
+  school: "PES University, Bangalore"
+  degree: "B.Tech in Computer Science and Engineering"
+  dates: "2023 – 2027"
+
+publications:
+  - title: "Pharmacokinetic SSMs for Haemodynamic Collapse Prediction"
+    venue: "AIiH 2026"
+    award: "Best Paper Nominee (top 3%)"
+    authors: ["Rithin Nagaraj", "Sudiksha Chindula", "Bhaskarjyoti Das"]
+    links:
+      - { label: "DOI", url: "https://doi.org/10.1007/978-3-032-35387-0_22" }
+      - { label: "arXiv", url: "https://arxiv.org/abs/2609.24338" }
+    bullets:
+      - "Architected a Mamba-based selective state space model to forecast intraoperative hypotension 5 to 15 minutes in advance, achieving **0.7360 AUROC** and a **2.73-fold AUPRC lift** over random guessing."
+      - "Engineered Propofol and Remifentanil effect-site concentration trajectories as explicit inputs, preventing a **13.9% AUPRC drop** compared with haemodynamics-only baselines."
+      - "Quantified lead-gap contamination in prior evaluation setups, with strict temporal boundaries reducing apparent AUROC by **16.7%** compared with the less constrained evaluation."
+
+  - title: "CAP-Adam: Inspectable Protection for Continual Learning"
+    venue: "Under review at TMLR"
+    authors: ["Rithin Nagaraj", "Paras Chopra"]
+    links: []
+    bullets:
+      - "Proposed a continual learning optimizer that modulates parameter updates by their importance to previously learned tasks, outperforming AdamW and established baselines including Elastic Weight Consolidation (EWC)."
+      - "Achieved approximately **90% retention across 40 unique tasks** while maintaining **91% mean current-task accuracy over 200 sequential tasks** on Permuted MNIST with an MLP-300 model."
+      - "Showed that optimizer hyperparameters systematically control the stability–plasticity trade-off, enabling controlled studies of knowledge retention and adaptation."
+
+  - title: "Comparing Latent Concept Formation in SSMs and Transformers via SAEs"
+    venue: "arXiv preprint, 2026"
+    authors: ["Rithin Nagaraj", "Prerna Subhashchandra Kunder", "Rupa Laalasa Oruganti", "Aswhini Joshi"]
+    links:
+      - { label: "arXiv", url: "https://arxiv.org/abs/2609.24440" }
+    bullets:
+      - "Mapped feature-level correspondences between Mamba-130m and Pythia-70m using sparse autoencoder dictionaries over **10M text tokens**, finding no evidence of architecture-exclusive Dark Matter features."
+      - "Identified monosemantic landmark features in Mamba's recurrent hidden state and hypothesized that they act as periodic state resets that compensate for the absence of global positional attention."
+
+experience:
+  - role: "Research Collaborator"
+    org: "Imperial College London"
+    dates: "Aug 2026 – Present"
+    desc: "Continual reinforcement learning and the cost of safety correction in LLMs."
+  - role: "Research Intern"
+    org: "Lossfunk"
+    url: "https://lossfunk.com"
+    dates: "Jun 2026 – Present"
+    desc: "Continual learning optimizers (CAP-Adam, under review at TMLR) and AI control for LLM agents."
+  - role: "Research Intern"
+    org: "RAPID Labs, PES University"
+    dates: "Jun 2024 – Aug 2024"
+    desc: "Vision classifiers to predict arability of soil for exotic crops using satellite imagery."
+
+ongoing:
+  - title: "Continual RLVR and Safety-Support Collapse"
+    where: "Imperial College London"
+    code: "https://github.com/rithinnagaraj/safety-support-collapse"
+    bullets:
+      - "Asking whether training a 3B Qwen model on a sequence of harmless tasks with **RL from verifiable rewards (RLVR)** can quietly make useful, safe answers on earlier tasks unreachable, even while task accuracy and aggregate safety metrics look stable."
+      - "Measuring how many rollouts **corrective RLVR** needs before earlier tasks give a useful learning signal again, to see whether continual training makes safety fixes more expensive."
+  - title: "Adversarially Trained Container Design for LLM Agent Control"
+    where: "Lossfunk"
+    code: "https://github.com/rithinnagaraj/adversarial-sandbox"
+    bullets:
+      - "Training a **designer model** against LLM agents to write Docker configurations that stop a possibly misaligned agent from escaping or causing harm, without blocking the harmless work it is there to do."
+      - "In a first sanity check with **Qwen3-30B-A3B, DeepSeek-V4-Pro and GLM-5.3** as agents (4 routes to harm, ~5,000 possible configurations), a simple softmax policy found a setup that was both safe and useful within **20 episodes**."
+      - "Next: adding more independent routes to harm and opening up a much larger configuration space."
+  - title: "Confounding in Learned World Models for Anesthesia Dosing"
+    where: "PES University"
+    code: "https://github.com/rithinnagaraj/anesthetic-world-models"
+    bullets:
+      - "Clinicians adjust doses in response to what they see, so a model trained on recorded surgeries can pick up those reactions instead of how the drugs actually work. Testing whether world models fall into this trap, since RL dosing policies would be trained inside them."
+      - "Trained **25 models** (GRU, Transformer, RSSM, a 5-RSSM ensemble, and a hybrid where doses act only through pharmacokinetic–pharmacodynamic equations; 5 seeds each). The black boxes predict well: 6.9–7.2 five-minute BIS error, **27–29% better** than pharmacology alone."
+      - "Early counterfactual tests suggest they learned only part of the story: drug effects point the right way but are just **12–21% as strong** as pharmacology predicts and arrive **3–7 min late**. The hybrid recovers **~72%** of the expected effect with correct timing, at a 12% cost in BIS accuracy."
+
+projects:
+  - title: "Stable-Drift Re-implementation"
+    date: "Apr 2026"
+    code: "https://github.com/rithinnagaraj/selective-buffer-cifar"
+    bullets:
+      - "Re-implemented the ICCV 2025 latent drift-guided replay method on CIFAR-10, selecting exemplars by representational change under domain adaptation and validating that drift-based selection reduces forgetting compared with random replay."
+  - title: "Probing Compositional Limits in Object-Centric Learning"
+    date: "Jan 2026"
+    code: "https://github.com/rithinnagaraj/compositional-generalization-slots"
+    bullets:
+      - "Built a frozen Slot Attention plus relational graph pipeline for unsupervised object-part binding, using connected components and pairwise relations to bridge over-segmented object parts."
+      - "Achieved **0.775 F1** on texture-flattened PartImageNet++ and used zero-shot transfer from vehicles to quadrupeds to probe how strongly learned relations depend on domain-specific latent geometry."
+  - title: "World Models Re-implementation"
+    date: "Nov 2025"
+    code: "https://github.com/rithinnagaraj/world-models-implementation"
+    bullets:
+      - "Reproduced the complete VAE, MDN-RNN, and CMA-ES controller pipeline from scratch on CarRacing-v0, including random rollout collection, latent representation learning, sequence modeling, and controller optimization."
+
+skills:
+  - group: "Languages"
+    items: ["Python", "C", "C++", "Bash"]
+  - group: "ML frameworks"
+    items: ["PyTorch", "JAX", "TransformerLens", "NumPy", "SciPy", "Scikit-learn"]
+  - group: "Methods"
+    items: ["State space models (Mamba)", "World models (RSSM)", "Sparse autoencoders", "Reinforcement learning (RLVR)", "Continual learning", "Graph neural networks"]
+  - group: "Tools"
+    items: ["Git", "Docker", "Weights & Biases", "Jupyter"]

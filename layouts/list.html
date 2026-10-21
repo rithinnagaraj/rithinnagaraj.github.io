@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{- if ne .Kind "section" }}<p class="muted"><a href="{{ "/posts/" | relURL }}">← blog</a></p>{{ end }}
+<h1 class="post-title">{{ if eq .Kind "section" }}blog{{ else if eq .Kind "term" }}tagged “{{ lower .Title }}”{{ else }}tags{{ end }}</h1>
+{{- if eq .Kind "section" }}
+<p class="muted">{{ .Description | default "Notes and write-ups on machine learning research." | lower }}</p>
+{{- end }}
+{{- if eq .Kind "taxonomy" }}
+<ul class="rows">
+  {{- range .Data.Terms.Alphabetical }}<li><span class="when">{{ .Count }} post{{ if ne .Count 1 }}s{{ end }}</span><a href="{{ .Page.RelPermalink }}">{{ lower .Page.Title }}</a></li>{{ end }}
+</ul>
+{{- else }}
+{{- range .Pages.ByDate.Reverse }}
+<article class="entry">
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p class="muted">{{ .Date.Format "2 January 2006" | lower }} · {{ .ReadingTime }} min read</p>
+  <p class="summary">{{ .Summary | plainify | htmlUnescape | truncate 200 }}</p>
+</article>
+{{- end }}
+{{- end }}
+{{ end }}

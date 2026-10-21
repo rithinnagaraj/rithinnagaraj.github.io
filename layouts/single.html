@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{- $posts := (where site.RegularPages "Section" .Section).ByDate }}
+{{- $older := false }}{{ $newer := false }}{{ $found := false }}
+{{- range $posts }}
+  {{- if $found }}{{ if not $newer }}{{ $newer = . }}{{ end }}
+  {{- else if eq .RelPermalink $.RelPermalink }}{{ $found = true }}
+  {{- else }}{{ $older = . }}{{ end }}
+{{- end }}
+<article class="post">
+  <p class="muted"><a href="{{ "/posts/" | relURL }}">← blog</a></p>
+  <h1 class="post-title">{{ .Title }}</h1>
+  <p class="muted">
+    {{ .Date.Format "2 January 2006" | lower }} · {{ .ReadingTime }} min read
+    {{- with .Params.tags }} · {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "/tags/%s/" (urlize $t)) | relURL }}">{{ lower $t }}</a>{{ end }}{{ end }}
+  </p>
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+</article>
+<nav class="prevnext" aria-label="More posts">
+  <span>{{ with $older }}← <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</span>
+  <span>{{ with $newer }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> →{{ end }}</span>
+</nav>
+{{ end }}

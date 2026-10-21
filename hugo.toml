@@ -1,47 +1,48 @@
 baseURL = "https://rithinnagaraj.github.io/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Rithin Nagaraj"
-theme = "PaperMod"
+enableRobotsTXT = true
+
+# The site uses its own small theme in /layouts and /assets (no external theme).
 
 [params]
-  defaultTheme = "dark"
-  disableThemeToggle = true
-  ShowReadingTime = true
-  ShowPostNavLinks = true
-  math = true
-  tagline = "CS undergraduate researching Reinforcement Learning, Continual Learning and Representation Learning."
+  description = "Rithin Nagaraj is a CS undergraduate researching continual learning, AI safety and control, world models for safe RL, mechanistic interpretability and state space models."
+  email = "rithin.nagaraj@gmail.com"
+  github = "https://github.com/rithinnagaraj"
+  # Served from the repo root via the mount below, so recompiling main.tex updates the site.
+  cv = "rithin_cv.pdf"
 
-  [[params.socialIcons]]
-    name = "email"
-    title = "Email"
-    url = "mailto:rithin.nagaraj@gmail.com"
-
-  [[params.socialIcons]]
-    name = "github"
-    title = "GitHub"
-    url = "https://github.com/rithinnagaraj"
-
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/"
-    weight = 10
-
-  [[menu.main]]
-    identifier = "blogs"
-    name = "Blogs"
-    url = "/posts/"
-    weight = 20
+[taxonomies]
+  tag = "tags"
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      math = true
-    [markup.goldmark.renderer]
-      unsafe = true
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    style = "dracula"
 
-[markup.highlight]
-  codeFences = true
-  guessSyntax = true
-  style = "dracula"
+# Default mounts, plus the compiled CV from the repo root.
+[module]
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"
+  [[module.mounts]]
+    source = "rithin_cv.pdf"
+    target = "static/rithin_cv.pdf"

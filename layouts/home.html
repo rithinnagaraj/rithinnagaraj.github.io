@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{- $cv := hugo.Data.cv }}
+{{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+
+<section class="intro">
+  <div class="intro-text">
+    {{ .Content }}
+    <p class="muted">interests: {{ delimit $cv.interests ", " }}.</p>
+  </div>
+  <figure class="intro-photo">
+    {{- with resources.Get "images/profile.jpeg" }}
+    {{- $img := .Fill "480x600 Center q82 webp" }}
+    <img src="{{ $img.RelPermalink }}" width="240" height="300" alt="Rithin Nagaraj, smiling, in a straw fedora in front of a waterfall">
+    {{- end }}
+    <figcaption class="muted">{{ $cv.photo_caption }}</figcaption>
+    <p class="contact">
+      {{ site.Params.email }}<br>
+      {{ $cv.education.school | lower }}
+    </p>
+  </figure>
+</section>
+
+<h2 id="publications">publications</h2>
+{{- range $cv.publications }}
+<article class="entry">
+  <h3>{{ .title }}</h3>
+  <p class="byline">{{ range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if eq $a "Rithin Nagaraj" }}<b>{{ $a }}</b>{{ else }}{{ $a }}{{ end }}{{ end }}</p>
+  <p class="muted">{{ .venue }}{{ with .award }} · <span class="star">★ {{ . }}</span>{{ end }}</p>
+  {{ partial "entry-links.html" . }}
+</article>
+{{- end }}
+
+<h2 id="research">in progress</h2>
+{{- range $cv.ongoing }}
+<article class="entry">
+  <h3>{{ .title }}</h3>
+  <p class="muted">{{ .where }}</p>
+  {{ partial "entry-links.html" (merge . (dict "links" (slice (dict "label" "code" "url" .code)))) }}
+</article>
+{{- end }}
+
+<h2 id="experience">experience</h2>
+<ul class="rows">
+  {{- range $e := $cv.experience }}
+  <li><span class="when">{{ $e.dates }}</span><span>{{ $e.role }}, {{ with $e.url }}<a href="{{ . }}">{{ $e.org }}</a>{{ else }}{{ $e.org }}{{ end }}<br><span class="muted">{{ $e.desc }}</span></span></li>
+  {{- end }}
+</ul>
+
+<h2 id="projects">projects</h2>
+{{- range $cv.projects }}
+<article class="entry">
+  <h3>{{ .title }}</h3>
+  <p class="muted">{{ .date }}</p>
+  {{ partial "entry-links.html" (merge . (dict "links" (slice (dict "label" "code" "url" .code)))) }}
+</article>
+{{- end }}
+
+<h2 id="writing">writing</h2>
+<ul class="rows">
+  {{- range $posts }}
+  <li><span class="when">{{ .Date.Format "Jan 2006" | lower }}</span><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{- end }}
+</ul>
+
+<h2 id="toolbox">toolbox</h2>
+<ul class="rows">
+  {{- range $cv.skills }}
+  <li><span class="when">{{ .group | lower }}</span><span>{{ delimit .items ", " }}</span></li>
+  {{- end }}
+</ul>
+{{ end }}

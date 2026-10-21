@@ -1,0 +1,12 @@
+{{- /* Links for a CV entry plus its bullet points folded behind "+ details". */ -}}
+<div class="entry-links">
+  {{- range .links }}<a href="{{ .url }}">{{ .label | lower }}</a>{{ end }}
+  {{- with .bullets }}
+  <details>
+    <summary>details</summary>
+    <ul>
+      {{- range . }}<li>{{ . | markdownify }}</li>{{ end }}
+    </ul>
+  </details>
+  {{- end }}
+</div>
