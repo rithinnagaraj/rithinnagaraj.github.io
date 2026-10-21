@@ -7,7 +7,8 @@ enableRobotsTXT = true
 
 [params]
   description = "Rithin Nagaraj is a CS undergraduate researching reinforcement learning, AI safety and control, continual learning, world models and interpretability."
-  email = "rithin [dot] nagaraj [at] gmail [dot] com"
+  email = "rithin.nagaraj@gmail.com"                 # used for the header mailto link
+  email_display = "rithin[dot]nagaraj[at]gmail[dot]com"  # shown under the photo
   github = "https://github.com/rithinnagaraj"
   # Served from the repo root via the mount below, so recompiling main.tex updates the site.
   cv = "rithin_cv.pdf"

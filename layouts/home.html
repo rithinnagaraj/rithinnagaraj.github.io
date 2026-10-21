@@ -14,7 +14,7 @@
     {{- end }}
     <figcaption class="muted">{{ $cv.photo_caption }}</figcaption>
     <p class="contact">
-      {{ site.Params.email }}<br>
+      {{ site.Params.email_display | default site.Params.email }}<br>
       {{ $cv.education.school | lower }}
     </p>
   </figure>
